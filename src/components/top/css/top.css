@@ -1,0 +1,13 @@
+.top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 35%;
+    background-color: var(--color-secondary);
+}
+
+.font {
+    font-size: 5rem;
+    color: var(--color-bg);
+}

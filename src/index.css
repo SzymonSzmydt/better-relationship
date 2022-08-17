@@ -1,16 +1,17 @@
 :root {
-  --color-primary: #AABAA8;
-  --color-secondary: #8AA397;
-  --color-third: #6D8D87;
-  --color-accent: #668692;
-  --color-bonus: #4C8995;
-  --color-dark: #2F4858;
-  --color-white: #F8FFF8;
-
+  --color-bg: #E6F4F1;
+  --color-primary: #95B0B6;
+  --color-secondary: #547FA4;
+  --color-dark: #324B50;
+  --color-white: #ffffff;
+  --color-accent: #3989C4;
+  --radius: 8px;
 }
 
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
   color: var(--color-dark);
 }
