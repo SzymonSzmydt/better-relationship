@@ -1,10 +1,13 @@
 :root {
   --color-bg: #E6F4F1;
-  --color-primary: #95B0B6;
   --color-secondary: #547FA4;
   --color-dark: #324B50;
   --color-white: #ffffff;
   --color-accent: #3989C4;
+  --color-btn-one: #95B0B6;
+  --color-btn-two: #7A82A7;
+  --color-btn-tree: #80D7BE;
+  --color-btn-four: #B78295;
   --radius: 8px;
 }
 
