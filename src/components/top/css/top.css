@@ -2,13 +2,45 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 35%;
+    color: var(--color-bg);
     background: rgb(2,0,36);
     background: linear-gradient(0deg, var(--gradient-light) 0%, var(--gradient-dark) 100%);
     border-radius: 0 0 2rem 2rem;
+
+    position: relative;
 }
 
-.font {
-    font-size: 5rem;
-    color: var(--color-bg);
+.container {
+    max-width: 766px;
+    margin: 0 auto;
+}
+
+.top__statistic {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0.5rem;
+    width: 90%;
+    margin: 0 1rem;  
+}
+
+.top__statistic-section {
+    text-align: center;
+    color: var(--color-white);
+    padding: 0 1rem;
+}
+
+.p-normal {
+    font-family: var(--sherif);
+    font-size: 1.5rem;
+    font-weight: 300;
+}
+
+.p-text {
+    font-family: var(--sherif);
+    font-size: 0.75rem;
+    font-weight: 300;
+    text-transform: lowercase;
 }

@@ -4,3 +4,8 @@
 
   background-color: var(--color-bg);
 }
+
+.font {
+  font-size: 4rem;
+  color: var(--color-bg);
+}
