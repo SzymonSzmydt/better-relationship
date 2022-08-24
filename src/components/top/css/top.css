@@ -4,7 +4,7 @@
     align-items: center;
     height: 35%;
     background: rgb(2,0,36);
-    background: linear-gradient(0deg, rgba(123,201,231,1) 0%, rgba(58,77,152,1) 100%);
+    background: linear-gradient(0deg, var(--gradient-light) 0%, var(--gradient-dark) 100%);
     border-radius: 0 0 2rem 2rem;
 }
 

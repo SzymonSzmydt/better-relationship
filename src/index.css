@@ -6,8 +6,11 @@
   --color-accent: #3989C4;
   --color-btn-one: #95B0B6;
   --color-btn-two: #7A82A7;
-  --color-btn-tree: #80D7BE;
-  --color-btn-four: #B78295;
+  --color-btn-tree: #95B0B6;
+  --color-btn-four: #95B0B6;
+
+  --gradient-dark: #0b645d;
+  --gradient-light: #7eb1c5;
   --radius: 8px;
 }
 
