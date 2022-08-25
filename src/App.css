@@ -1,4 +1,5 @@
 .App {
+  display: block;
   width: 100%;
   height: 100vh;
 
@@ -8,4 +9,33 @@
 .font {
   font-size: 4rem;
   color: var(--color-bg);
+}
+
+@keyframes from-nothing {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.intro-1 {
+  animation-name: from-nothing;
+  animation-duration: 1.8s;
+  animation-timing-function: ease-in-out;
+}
+
+.intro-2 {
+  animation-name: from-nothing;
+  animation-duration: 2.5s;
+  animation-timing-function: ease-in-out;
+}
+
+.intro-text {
+  text-align: center;
+  padding: 1rem;
+  font-size: 2.75rem;
+  font-family: var(--Great);
+  color: var(--color-btn-two)
 }

@@ -1,7 +1,6 @@
 .window {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
-    flex-wrap: wrap;
     margin: 0.5rem 0;
     padding: 0.5rem;
     background-color: var(--color-white);

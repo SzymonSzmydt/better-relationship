@@ -1,12 +1,19 @@
 import './App.css';
-import { Header } from './components/header/Header';
 import { Main } from './components/Main';
+import { Login } from './components/Login';
+import { Routes, Route } from "react-router-dom";
+import { UserAuthContextProvider } from './context/UserAuthContext';
+import { ProtectedRoute } from './context/ProtectedRoute';
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Main/>
+      <UserAuthContextProvider>
+        <Routes>
+          <Route path="/" element={<Login/>}/>
+          <Route path="/home" element={ <ProtectedRoute><Main/></ProtectedRoute>} />
+        </Routes>
+      </UserAuthContextProvider>      
     </div>
   );
 }

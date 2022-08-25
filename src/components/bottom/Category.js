@@ -5,7 +5,7 @@ export function Category() {
 
     return (
         <Window>
-            <CategoryBtn bgcolor="var(--color-btn-four)" text="Spradźcie się">
+            <CategoryBtn bgcolor="var(--color-btn-four)" text="Sprawdźcie się" align="center">
                 <span className="material-symbols-outlined font">heart_plus</span>
             </CategoryBtn>
             <CategoryBtn bgcolor="var(--color-btn-two)" text="Stan relacji">

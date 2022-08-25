@@ -2,12 +2,12 @@ import "./css/buttons.css";
 import { Text } from './../Text';
 
 
-export function CategoryBtn({children, bgcolor, text}) {
+export function CategoryBtn({children, bgcolor, text, align}) {
 
     return (
         <div className="category-btn" style={{backgroundColor: bgcolor}}>
             {children}
-            <Text> { text }</Text>
+            <Text align={align}> { text }</Text>
         </div>
     )
 }

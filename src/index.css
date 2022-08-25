@@ -12,7 +12,8 @@
   --gradient-dark: #0b645d;
   --gradient-light: #7eb1c5;
   --radius: 8px;
-  --sherif: 'Roboto Condensed', sans-serif;
+  --Roboto: 'Roboto Condensed', sans-serif;
+  --Great: 'Great Vibes', cursive;
 }
 
 body {

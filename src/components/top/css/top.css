@@ -17,6 +17,21 @@
     margin: 0 auto;
 }
 
+.settings-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2.5rem;
+    color: var(--color-bg);
+    transition: all 0.4s;
+} 
+    
+.settings-icon:hover, .settings-icon:active {
+    transform: rotate(180deg);
+    color: var(--color-accent);
+}
+
 .top__statistic {
     display: flex;
     justify-content: space-between;
@@ -33,14 +48,15 @@
 }
 
 .p-normal {
-    font-family: var(--sherif);
-    font-size: 1.5rem;
-    font-weight: 300;
+    font-family: var(--Roboto);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--color-)
 }
 
 .p-text {
     font-family: var(--sherif);
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 300;
     text-transform: lowercase;
 }
