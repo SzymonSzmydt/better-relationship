@@ -4,7 +4,8 @@ import { useState } from 'react';
 
 const firestoreUser = {
     name: "Szymon",
-    gender: 'male'
+    gender: 'male',
+    score: 0
 }
 
 export function Main() {
