@@ -1,6 +1,6 @@
 import { Window } from './general/Window';
 
-export function Home() {
+export function Quiz() {
 
     return (
         <Window>

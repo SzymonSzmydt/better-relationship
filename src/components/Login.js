@@ -1,8 +1,22 @@
 import "./components.css";
 import GoogleButton from 'react-google-button'
 import { Title } from './general/Title';
+import { useUserAuth } from './../context/UserAuthContext';
+import { useNavigate } from 'react-router-dom';
 
 export function Login() {
+    const { googleSignIn } = useUserAuth();
+    const navigate = useNavigate();
+
+    const handleGoogleClick = async(e) => {
+        e.preventDefault();
+        try {
+            await googleSignIn();
+            navigate("/home");
+        } catch (err) {
+            console.log(console.message);
+        }
+    }
 
     return (
         <div className="login">
@@ -16,9 +30,7 @@ export function Login() {
             </div>
             <div className="box">
                 <Title align="center"> Zaloguj się</Title>
-                <GoogleButton
-                    onClick={() => { console.log('Google button clicked') }}
-                />
+                <GoogleButton onClick={handleGoogleClick} />
                 <button className="facebook">Sign in with Facebook</button>
             </div>
         </div>
