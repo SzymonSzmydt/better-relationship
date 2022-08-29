@@ -1,9 +1,9 @@
 
-export function UserIcon() {
+export function UserIcon({ image }) {
 
     return (
-        <div>
-            <span className="material-symbols-outlined font">account_box</span>
-        </div>
+        <figure>
+            <img src={image} alt="User image" style={{borderRadius:"var(--radius)"}} />
+        </figure>
     )
 }

@@ -4,33 +4,19 @@ import { Title } from './../general/Title';
 import { Statistic } from './Statistic';
 import { useState } from 'react';
 import { useUserAuth } from "./../../context/UserAuthContext";
+import { TopHeader } from './TopHeader';
 
-export function Top({ name, progress, gender }) {
+export function Top() {
     const { user, logOut } = useUserAuth();
-
-    console.log("user ", user);
-
-    const handleLogOut = async() => {
-        try {
-            await logOut();
-        } catch (err) {
-            console.log(err.message);
-        }
-    }
 
     return (
         <div className="top">
-            <span className="material-symbols-outlined settings-icon" 
-                style={{color: !user ? "var(--color-green)" : "var(--color-error)"}}
-                onClick={handleLogOut} 
-            >
-                power_settings_new
-            </span>
-            <UserIcon/>
-            <Title>{ name }</Title>
+            <TopHeader user={user ? user : "loading"} logOut={logOut}/>
+            <UserIcon image={user ? user.photoURL : ' '}/>
+            <Title>{ user ? user.displayName.split(' ', 1) : " " }</Title>
             <div className="top__statistic container">
-                <Statistic progress={progress} text={"Moja ocena"}/>
-                <Statistic progress={progress} text={`${gender} ocena`}/>
+                <Statistic progress={0} text={"Ja"}/>
+                <Statistic progress={0} text={"Partner"}/>
             </div>
         </div>
     )

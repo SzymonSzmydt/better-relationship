@@ -2,20 +2,35 @@ import "./components.css";
 import GoogleButton from 'react-google-button'
 import { Title } from './general/Title';
 import { useUserAuth } from './../context/UserAuthContext';
+import { db } from './../context/firebase';
 import { useNavigate } from 'react-router-dom';
+import { doc, setDoc } from "firebase/firestore"; 
+
 
 export function Login() {
-    const { googleSignIn } = useUserAuth();
+    const { googleSignIn, user } = useUserAuth();
     const navigate = useNavigate();
 
+    const handleLogNewUser = async() => {
+        const userRef = doc(db, 'users', 'allUsers');
+        setDoc(userRef, 
+            {
+            name: user.displayName,
+            partner: 'none',
+            points: 0 
+            }, 
+            { merge: true });   
+    }
+
     const handleGoogleClick = async(e) => {
-        e.preventDefault();
+        e.preventDefault();      
         try {
             await googleSignIn();
             navigate("/home");
         } catch (err) {
             console.log(console.message);
         }
+        handleLogNewUser();
     }
 
     return (
