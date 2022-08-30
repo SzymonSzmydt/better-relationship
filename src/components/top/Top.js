@@ -15,8 +15,8 @@ export function Top() {
             <UserIcon image={user ? user.photoURL : ' '}/>
             <Title>{ user ? user.displayName.split(' ', 1) : " " }</Title>
             <div className="top__statistic container">
-                <Statistic progress={0} text={"Ja"}/>
-                <Statistic progress={0} text={"Partner"}/>
+                <Statistic progress={0} text={"Mój postęp"}/>
+                <Statistic progress={0} text={"Postęp partnera"}/>
             </div>
         </div>
     )

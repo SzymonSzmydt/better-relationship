@@ -2,35 +2,20 @@ import "./components.css";
 import GoogleButton from 'react-google-button'
 import { Title } from './general/Title';
 import { useUserAuth } from './../context/UserAuthContext';
-import { db } from './../context/firebase';
 import { useNavigate } from 'react-router-dom';
-import { doc, setDoc } from "firebase/firestore"; 
 
 
 export function Login() {
-    const { googleSignIn, user } = useUserAuth();
+    const { googleSignIn } = useUserAuth();
     const navigate = useNavigate();
 
-    const handleLogNewUser = async() => {
-        const userRef = doc(db, 'users', 'allUsers');
-        setDoc(userRef, 
-            {
-            name: user.displayName,
-            partner: 'none',
-            points: 0 
-            }, 
-            { merge: true });   
-    }
-
-    const handleGoogleClick = async(e) => {
-        e.preventDefault();      
+    const handleGoogleClick = async() => {
         try {
             await googleSignIn();
-            navigate("/home");
+            navigate('/home', true);
         } catch (err) {
             console.log(console.message);
         }
-        handleLogNewUser();
     }
 
     return (
@@ -46,7 +31,6 @@ export function Login() {
             <div className="box">
                 <Title align="center"> Zaloguj się</Title>
                 <GoogleButton onClick={handleGoogleClick} />
-                <button className="facebook">Sign in with Facebook</button>
             </div>
         </div>
     )

@@ -9,8 +9,7 @@ export function Bottom() {
         <div className="bottom">
             <Title>ODKRYJ SIEBIE</Title>
             <Text>
-                Skupcie uwagę na swoich słabych punktach, dzięki temu będziecie wiedzieć 
-                którym aspektom należy poświęcić większą uwagę.
+                <em>„Nasza wartość jest sumą naszych wartości”. Joe Batten</em>
             </Text>
             <Category/>
         </div>

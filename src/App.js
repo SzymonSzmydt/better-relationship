@@ -10,11 +10,11 @@ function App() {
     <div className="App">
       <UserAuthContextProvider>
         <Routes>
-          <Route path="/" element={ <Login/> }/>
-          <Route path="/home" element={ 
-            <ProtectedRoute>
+          {/* <Route path="/" element={ <Login/> }/> */}
+          <Route path="/" element={ 
+            // <ProtectedRoute>
               <Main/>
-            </ProtectedRoute> 
+            // {/* </ProtectedRoute>  */}
           }/>
         </Routes>
       </UserAuthContextProvider>      
