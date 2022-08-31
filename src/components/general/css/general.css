@@ -44,11 +44,3 @@
       transform: rotate(360deg);
     }
   }
-
-  .ask-window {
-      position: absolute;
-
-      top: 1rem;
-      margin: 0 auto;
-  }
-  

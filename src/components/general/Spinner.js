@@ -1,3 +1,14 @@
 export function Spinner() {
-    return <div class="lds-dual-ring"></div>
+    const style={
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%"
+    }
+    return (
+        <div style={style}>
+            <div class="lds-dual-ring"/>
+        </div>
+    
+    )
 }

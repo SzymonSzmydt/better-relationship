@@ -22,6 +22,10 @@
     left: 0;
 }
 
+.top-persons {
+    display: inline;
+}
+
 .settings-icon {
     cursor: pointer;
     padding: 0.5rem 1rem 0;

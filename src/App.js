@@ -10,8 +10,8 @@ function App() {
     <div className="App">
       <UserAuthContextProvider>
         <Routes>
-          {/* <Route path="/" element={ <Login/> }/> */}
-          <Route path="/" element={ 
+          <Route path="/" element={ <Login/> }/>
+          <Route path="/home" element={ 
             // <ProtectedRoute>
               <Main/>
             // {/* </ProtectedRoute>  */}
