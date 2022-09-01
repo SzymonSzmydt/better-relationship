@@ -15,7 +15,6 @@ export function Search() {
             const docSnap = await getDoc(doc(db, 'users', 'allUsers'));
 
             if (docSnap.exists()) {
-                console.log("Document data:", docSnap.data());
                 setUsersFromServer(docSnap.data());
             } else {
             // doc.data() will be undefined in this case

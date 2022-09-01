@@ -7,7 +7,7 @@ export function Spinner() {
     }
     return (
         <div style={style}>
-            <div class="lds-dual-ring"/>
+            <div className="lds-dual-ring"/>
         </div>
     
     )

@@ -9,7 +9,7 @@ export function Bottom() {
         <div className="bottom">
             <Title>ODKRYJ SIEBIE</Title>
             <Text>
-                <em>„Nasza wartość jest sumą naszych wartości”. Joe Batten</em>
+                <em style={{fontWeight: "500"}}>„Nasza wartość jest sumą naszych wartości”. Joe Batten</em>
             </Text>
             <Category/>
         </div>

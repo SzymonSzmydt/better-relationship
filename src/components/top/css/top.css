@@ -23,7 +23,7 @@
 }
 
 .top-persons {
-    display: inline;
+    display: flex;
 }
 
 .settings-icon {
@@ -66,4 +66,3 @@
     font-weight: 300;
     text-transform: lowercase;
 }
-
