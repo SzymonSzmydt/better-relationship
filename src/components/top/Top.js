@@ -5,7 +5,7 @@ import { useUserAuth } from "./../../context/UserAuthContext";
 import { TopHeader } from './TopHeader';
 import { Partner } from './Partner';
 
-export function Top({ setPartnerSearch }) {
+export function Top() {
     const { user, logOut } = useUserAuth();
 
     return (
@@ -13,7 +13,7 @@ export function Top({ setPartnerSearch }) {
             <TopHeader user={user ? user : "loading"} logOut={logOut}/>
             <div className="top-persons">
                 <UserIcon user={user} image={user ? user.photoURL : ''}/>
-                <Partner setPartnerSearch={setPartnerSearch}/>
+                <Partner/>
             </div>
             
             <div className="top__statistic container">

@@ -1,14 +1,23 @@
+import { useEffect, useState, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { db } from './../context/firebase';
+import { useUserAuth } from './../context/UserAuthContext';
+
 import { Text } from './general/Text';
 import { Title } from './general/Title';
-import { doc, getDoc } from 'firebase/firestore';
-import { db } from './../context/firebase';
-import { useEffect, useState, useCallback } from 'react';
 import { Spinner } from './general/Spinner';
+import { Partner } from './top/Partner';
+
+
 
 export function Search() {
     const [ usersFromServer, setUsersFromServer ] = useState([]);
     const [ inputTyping, setInputTyping ] = useState('');
     const [ searchingEmail, setSearchingEmail ] = useState([]);
+    const { user } = useUserAuth(); 
+    const navigate = useNavigate();
 
     useEffect(()=> {
         const getUserFromServerList = async () => {
@@ -24,16 +33,27 @@ export function Search() {
         return ()=> getUserFromServerList();
     }, []);
 
-    const handleSearch = useCallback((e)=> {
+    const handleSearchButton = useCallback((e)=> {
         e.preventDefault();
-        const data = Object.keys(usersFromServer);
-        setSearchingEmail(data.filter(e => e.match(inputTyping)))
+        if (inputTyping.length > 0) {
+            const data = Object.keys(usersFromServer);
+            setSearchingEmail(data.filter(e => e.match(inputTyping)))
+        }
+        else return null
     }, [inputTyping, usersFromServer]);
 
+    const handlePartnerSelection = useCallback( async(element) => {
+        await setDoc(doc(db, 'users', 'allUsers'), {
+            [user.email] : {
+                partner: element
+            }
+         }, {merge: true});
+         navigate("/home", {replace: true});
+    }, [user.email]);
 
     return (
         usersFromServer ?
-        <div className="bottom">
+        <div className="bottom" style={{marginTop: "5rem"}}>
             <Title>Znajdź partnera</Title>
             <Text>
                 Razem łatwiej pokonacie trudności.
@@ -43,15 +63,24 @@ export function Search() {
                     Wpisz email partnera / partnerki: 
                 </label>
                 <input type="email" value={inputTyping} onChange={(e)=> setInputTyping(state => (e.target.value))}/>
-                <button className="facebook" onClick={e => handleSearch(e) }>Szukaj</button>
+                <button className="facebook" onClick={e => handleSearchButton(e) }>Szukaj</button>
             </form>  
             <div className="search__results form">
                 <ul>
                     { searchingEmail ? searchingEmail.map((element, index) => 
-                        <li key={index}> {element } </li>) : null }
+                        <li 
+                            className="search__result-li" 
+                            key={index}
+                            onClick={() => handlePartnerSelection(element)} 
+                        > 
+                            {element } 
+                        </li>) : null }
                 </ul>
-                
             </div>
+            <div className="form">
+                <button className="facebook" style={{marginTop: "0"}} onClick={() => navigate("/home") }>Anuluj</button>     
+            </div>
+            
         </div>
         : <Spinner/>
     )

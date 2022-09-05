@@ -1,6 +1,7 @@
-import { useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-export function Partner({ setPartnerSearch }) {
+export function Partner() {
+    const navigate = useNavigate();
     const style = {
         cursor: "pointer",
         marginTop: "1rem",
@@ -10,14 +11,8 @@ export function Partner({ setPartnerSearch }) {
         color: "var(--color-white)"
     }
 
-    const handlePartnerSearchClick = useCallback(() => {
-        setPartnerSearch(true);
-      },
-      [setPartnerSearch],
-    );
-
     return (
-        <div style={style} onClick={handlePartnerSearchClick}>
+        <div style={style} onClick={()=> navigate("/search")}>
             <span className="material-symbols-outlined font">person_add</span>
         </div>
     )
