@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export function TopHeader({ logOut }) {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ export function TopHeader({ logOut }) {
                     onClick={handleLogOut}>
                     power_settings_new
             </span>
+            <Link to="/home" className="link"> Home </Link>
         </header>
     )
 }

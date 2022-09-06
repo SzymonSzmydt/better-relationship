@@ -1,24 +1,21 @@
 import "./css/top.css";
-import { UserIcon } from './../general/UserIcon';
 import { Statistic } from './Statistic';
-import { useUserAuth } from "./../../context/UserAuthContext";
-import { TopHeader } from './TopHeader';
-import { Partner } from './Partner';
+import { Spinner } from './../general/Spinner';
+import { TopUser } from './TopUser';
 
-export function Top() {
-    const { user, logOut } = useUserAuth();
+export function Top({ mainUser, partnerUser }) {
 
     return (
         <div className="top">
-            <TopHeader user={user ? user : "loading"} logOut={logOut}/>
-            <div className="top-persons">
-                <UserIcon user={user} image={user ? user.photoURL : ''}/>
-                <Partner/>
-            </div>
+            <TopUser mainUser={mainUser} partnerUser={partnerUser}/>
             
             <div className="top__statistic container">
-                <Statistic progress={0} text={"Mój postęp"}/>
-                <Statistic progress={0} text={"Postęp partnera"}/>
+                { mainUser !== undefined || mainUser !== [] || mainUser !== null ?
+                <Statistic progress={mainUser.score} text={"Mój postęp"}/> :
+                <Spinner/> }
+                { partnerUser !== undefined || partnerUser !== [] || partnerUser !== null ?
+                <Statistic progress={partnerUser.score} text={"Postęp partnera"}/> :
+                <Statistic progress={0} text={"Brak danych partnera"}/> }
             </div>
         </div>
     )

@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import { UserAuthContextProvider } from './context/UserAuthContext';
 import { ProtectedRoute } from './context/ProtectedRoute';
 import { Search } from './components/Search';
+import { Ankiet } from './components/bottom/Ankiet';
 
 function App() {
   
@@ -14,14 +15,19 @@ function App() {
         <Routes>
           <Route path="/" element={ <Login/> }/>
           <Route path="/home" element={ 
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Main/>
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }/>
           <Route path="/search" element={ 
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <Search/>
-            </ProtectedRoute>
+            // {/* </ProtectedRoute> */}
+          }/>
+          <Route path="/ankiet" element={ 
+            // <ProtectedRoute>
+              <Ankiet/>
+            // </ProtectedRoute>
           }/>
           <Route path="*" element={ <Login/> }/>
         </Routes>
