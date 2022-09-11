@@ -7,7 +7,9 @@ import { db } from './../context/firebase';
 import { Top } from './top/Top';
 import { Spinner } from './general/Spinner';
 import { Bottom } from './bottom/Bottom';
-import { Ankiet } from './bottom/Ankiet';
+import { Ankiet } from './Ankiet';
+
+
 
 export function Main() {
     const { user } = useUserAuth(); 
@@ -50,7 +52,7 @@ export function Main() {
          <>
             {/* <Top mainUser={mainUser} partnerUser={partnerUser}/>    
             <Bottom/> */}
-            <Ankiet mainUser={mainUser} partnerUser={partnerUser}/>
+            <Ankiet/>
         </> :
         <Spinner/>
         )

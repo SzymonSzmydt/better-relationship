@@ -17,3 +17,14 @@
 .category-btn:hover {
     box-shadow: 0 0 3px 1px var(--color-dark);
 }
+
+.Link {
+    text-decoration: none;
+    font-family: var(--Roboto);
+    font-size: 1.25rem;
+    color: var(--color-border);
+}
+
+.Link:hover {
+    color: var(--color-dark);
+}

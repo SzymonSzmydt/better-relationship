@@ -6,6 +6,9 @@
   --color-green: #4fbd67;
   --color-error: #df8a8e;
   --color-btn-four: #88a79a;
+  --color-facebook: #50b6df;
+
+  --color-border: #00C9B8;
 
   --gradient-dark: #0b645d;
   --gradient-light: #7eb1c5;
@@ -18,7 +21,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--Roboto);
   color: var(--color-dark);
   background-color: var(--color-bg);
 }
