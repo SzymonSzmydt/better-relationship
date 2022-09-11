@@ -19,7 +19,6 @@ export function Ankiet() {
             const docSnap = await getDoc(doc(db, 'users', 'ankiet'));
 
             if (docSnap.exists()) {
-                console.log(docSnap.data().standard);
                 setQuestions(docSnap.data().standard);       
             } else {      
                 console.log("There is no such documnet");  
@@ -34,9 +33,9 @@ export function Ankiet() {
                 <TopHeader logOut={logOut}/>
                 <Title> Odpowiedz na pytania</Title>
                 <Text>
-                    <em style={{fontWeight: "500"}}>
+                    <i>
                         „Jeśli mówisz prawdę, nie musisz niczego pamiętać.”. &nbsp; Mark Twain
-                    </em>
+                    </i>
                 </Text>
                 <div className="top__statistic container">
                     <Statistic progress={questionNumber} text={"nr pytania"}/>

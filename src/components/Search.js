@@ -8,9 +8,6 @@ import { useUserAuth } from './../context/UserAuthContext';
 import { Text } from './general/Text';
 import { Title } from './general/Title';
 import { Spinner } from './general/Spinner';
-import { Partner } from './top/Partner';
-
-
 
 export function Search() {
     const [ usersFromServer, setUsersFromServer ] = useState([]);
@@ -35,7 +32,7 @@ export function Search() {
 
     const handleSearchButton = useCallback((e)=> {
         e.preventDefault();
-        if (inputTyping.length > 0) {
+        if (inputTyping.length > 3) {
             const data = Object.keys(usersFromServer);
             setSearchingEmail(data.filter(e => e.match(inputTyping)))
         }
@@ -49,7 +46,7 @@ export function Search() {
             }
          }, {merge: true});
          navigate("/home", {replace: true});
-    }, [user.email]);
+    }, [user.email, navigate]);
 
     return (
         usersFromServer ?
@@ -60,7 +57,7 @@ export function Search() {
             </Text>
             <form className="form">
                 <label>
-                    Wpisz email partnera / partnerki: 
+                    Wyszukaj email partnera (min. 4 znaki): 
                 </label>
                 <input type="email" value={inputTyping} onChange={(e)=> setInputTyping(state => (e.target.value))}/>
                 <button className="facebook" onClick={e => handleSearchButton(e) }>Szukaj</button>

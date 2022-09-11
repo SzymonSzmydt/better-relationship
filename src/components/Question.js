@@ -16,7 +16,7 @@ export function Question({ question, setQuestionNumber, questionNumber, user }) 
             [user.email] : {
                 score: {
                     [date] : [range]
-                }             
+                }            
             }
          }, {merge: true});
     }, [user.email, range]);
@@ -26,9 +26,9 @@ export function Question({ question, setQuestionNumber, questionNumber, user }) 
         setQuestionNumber(state => state + 1);
        if (questionNumber >= question.length) {
             addScoreToServer();
-            navigate("/home");
+            navigate("/home", {replace: true});
         }
-    }, [score, setQuestionNumber, questionNumber, question.length, range]);
+    }, [score, navigate, setQuestionNumber, questionNumber, question.length, range, addScoreToServer]);
 
     const handlePreviousButton = useCallback(()=> {
         setQuestionNumber(state => state - 1);
@@ -74,7 +74,7 @@ export function Question({ question, setQuestionNumber, questionNumber, user }) 
             </div>
             <Link to="/home" className="Link" style={{paddingTop: "1rem"}}> Anuluj </Link>
             <span style={{fontSize: "1rem", paddingTop: "1rem"}}>
-                Jeśli nie czujesz, że jest to odpowiedni momemnt na ocenę
+                Jeśli nie czujesz, że jest to odpowiedni momemnt na ocenę twojego związku
                 <Link to="/home" className="Link" style={{fontSize: "1rem"}}> Anuluj </Link> 
                 i wróć później.
             </span>      

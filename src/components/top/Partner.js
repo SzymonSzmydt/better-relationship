@@ -13,7 +13,7 @@ export function Partner() {
 
     return (
         <div style={style} onClick={()=> navigate("/search")}>
-            <span className="material-symbols-outlined font">person_add</span>
+            <span className="material-symbols-outlined icon">person_add</span>
         </div>
     )
 }

@@ -19,23 +19,6 @@
     color: var(--color-dark);
 }
 
-.facebook {
-    cursor: pointer;
-    border: 0;
-    padding: 1rem 3rem;
-    margin: 0.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #FFFFFF;
-
-    background-color: var(--color-facebook);
-    transition: box-shadow 0.2s;
-}
-
-.facebook:hover {
-    box-shadow: 1px 1px 1px 0 var(--color-dark);
-}
-
 .form {
     margin: 1rem 1rem 0;
     padding: 1rem 1.5rem;

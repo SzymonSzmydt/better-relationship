@@ -1,17 +1,18 @@
 :root {
-  --color-bg: #E6F4F1;
+  --color-bg: #FFF6FF;
+  --color-window: #EAF2FA;
   --color-dark: #324B50;
   --color-white: #ffffff;
 
   --color-green: #4fbd67;
   --color-error: #df8a8e;
-  --color-btn-four: #88a79a;
+  --color-btn-category: #0098FF;
   --color-facebook: #50b6df;
 
-  --color-border: #00C9B8;
+  --color-border: #9E39D4;
 
-  --gradient-dark: #0b645d;
-  --gradient-light: #7eb1c5;
+  --gradient-dark: #9E39D4;
+  --gradient-light: #F424AA;
   --radius: 8px;
   --Roboto: 'Roboto Condensed', sans-serif;
   --Great: 'Great Vibes', cursive;
@@ -22,6 +23,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: var(--Roboto);
+  font-weight: 400;
   color: var(--color-dark);
   background-color: var(--color-bg);
 }

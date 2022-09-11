@@ -14,7 +14,7 @@ function App() {
       <UserAuthContextProvider>
         <Routes>
           {/* <Route path="/" element={ <Login/> }/> */}
-          <Route path="/home" element={ 
+          <Route path="/" element={ 
             // <ProtectedRoute>
               <Main/>
             // </ProtectedRoute>
@@ -24,7 +24,7 @@ function App() {
               <Search/>
             // {/* </ProtectedRoute> */}
           }/>
-          <Route path="/" element={ 
+          <Route path="/ankiet" element={ 
             // <ProtectedRoute>
               <Ankiet/>
             // </ProtectedRoute>

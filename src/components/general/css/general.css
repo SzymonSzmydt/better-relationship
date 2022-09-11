@@ -4,20 +4,19 @@
     flex-wrap: wrap;
     margin: 0.5rem 0;
     padding: 0.5rem;
-    border: 1px solid var(--color-green);
     border-radius: var(--radius);
+    background-color: var(--color-window);
 }
 
 .text {
-    margin: 0 0 1rem;
-    padding: 1rem;
-    font-size: 0.8rem;
-    font-weight: 700;
+    padding: 0 1rem;
+    font-size: 1rem;
+    font-weight: 400;
 }
 
 .title{
     font-size: 1.15rem;
-    font-weight: 600;
+    font-weight: 500;
     margin: 0 0 1rem;
 }
 

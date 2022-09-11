@@ -8,7 +8,6 @@ export function Top({ mainUser, partnerUser }) {
     return (
         <div className="top">
             <TopUser mainUser={mainUser} partnerUser={partnerUser}/>
-            
             <div className="top__statistic container">
                 { mainUser !== undefined || mainUser !== [] || mainUser !== null ?
                 <Statistic progress={mainUser.score} text={"Mój postęp"}/> :

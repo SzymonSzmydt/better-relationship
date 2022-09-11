@@ -6,7 +6,7 @@
     height: 35%;
     color: var(--color-bg);
     background: rgb(2,0,36);
-    background: linear-gradient(0deg, var(--gradient-light) 0%, var(--gradient-dark) 100%);
+    background: linear-gradient(0deg, var(--gradient-light) 0%, var(--gradient-dark) 40%);
     border-radius: 0 0 2rem 2rem;
     position: relative;
 }
@@ -62,6 +62,7 @@
 
 .p-text {
     font-family: var(--sherif);
+    color: var(--color-bg);
     font-size: 0.8rem;
     font-weight: 300;
     text-transform: lowercase;
