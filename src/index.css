@@ -4,11 +4,11 @@
   --color-dark: #324B50;
   --color-white: #ffffff;
 
-  --color-green: #4fbd67;
-  --color-error: #df8a8e;
+  --color-green: #72d487;
+  --color-error: #ff002b;
   --color-btn-category: #0098FF;
   --color-facebook: #50b6df;
-
+  --color-chart: #FFE8FF;
   --color-border: #9E39D4;
 
   --gradient-dark: #9E39D4;
@@ -26,4 +26,6 @@ body {
   font-weight: 400;
   color: var(--color-dark);
   background-color: var(--color-bg);
+
+  color: #8f386d;
 }

@@ -50,17 +50,19 @@
 .top__statistic-section {
     text-align: center;
     color: var(--color-white);
-    padding: 0 1rem;
+    padding: 0 0.5rem;
 }
 
 .p-normal {
+    text-align: center;
     font-family: var(--Roboto);
-    font-size: 1.75rem;
-    font-weight: 400;
-    color: var(--color-)
+    font-size: 1.25rem;
+    font-weight: 300;
+    color: var(--color-);
 }
 
 .p-text {
+    text-align: center;
     font-family: var(--sherif);
     color: var(--color-bg);
     font-size: 0.8rem;

@@ -8,6 +8,9 @@ import { Text } from './general/Text';
 import { Question } from './Question';
 import { TopHeader } from './top/TopHeader';
 import { Statistic } from './top/Statistic';
+import { BarChart } from './general/BarChart';
+
+const data = [9, 8.5, 7, 3, 4.5, 2];
 
 export function Ankiet() {
     const { user, logOut } = useUserAuth(); 
@@ -31,12 +34,13 @@ export function Ankiet() {
         <>
             <div className="top">
                 <TopHeader logOut={logOut}/>
-                <Title> Odpowiedz na pytania</Title>
-                <Text>
+                {/* <Title> Odpowiedz na pytania</Title> */}
+                {/* <Text>
                     <i>
                         „Jeśli mówisz prawdę, nie musisz niczego pamiętać.”. &nbsp; Mark Twain
                     </i>
-                </Text>
+                </Text> */}
+                <BarChart score={data} title={'Punktacja'}/>
                 <div className="top__statistic container">
                     <Statistic progress={questionNumber} text={"nr pytania"}/>
                     <Statistic progress={question.length} text={"ilość pytań"}/>

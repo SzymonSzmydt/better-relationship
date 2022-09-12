@@ -4,7 +4,6 @@ import { Title } from './general/Title';
 import { db } from './../context/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 
-
 export function Question({ question, setQuestionNumber, questionNumber, user }) {
     const navigate = useNavigate();
     const [ range, setRange ] = useState(0);
@@ -40,6 +39,7 @@ export function Question({ question, setQuestionNumber, questionNumber, user }) 
                 <Title align={"center"}> 
                     <em className="em"> { question[questionNumber - 1]} </em>
                 </Title>    
+
             </div>
             <div className="window-box">
                 <Title align={"center"}> { range } </Title>
