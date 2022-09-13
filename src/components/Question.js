@@ -1,43 +1,45 @@
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Title } from './general/Title';
 import { db } from './../context/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 
-export function Question({ question, setQuestionNumber, questionNumber, user }) {
+export function Question({ score, setScore, question, setQuestionNumber, questionNumber, user }) {
     const navigate = useNavigate();
     const [ range, setRange ] = useState(0);
-    const [ score, setScore ] = useState({});
 
     const addScoreToServer = useCallback(async () => {
         const date = new Date().toLocaleDateString();
         await setDoc(doc(db, 'users', 'allUsers'), {
             [user.email] : {
-                score: {
-                    [date] : [range]
+                "score": {
+                    [date] : score
                 }            
             }
          }, {merge: true});
-    }, [user.email, range]);
+    }, [user.email, score]);
 
     const handleNextButton = useCallback(()=> {
-        setScore({...score, [questionNumber] : Number(range) });       
+        setScore([...score, Number(range) ]);       
         setQuestionNumber(state => state + 1);
-       if (questionNumber >= question.length) {
+       if (questionNumber > question.length) {
             addScoreToServer();
             navigate("/home", {replace: true});
         }
-    }, [score, navigate, setQuestionNumber, questionNumber, question.length, range, addScoreToServer]);
+        setRange(5);
+    }, [score, range, setScore, navigate, setQuestionNumber, questionNumber, question.length, addScoreToServer]);
 
     const handlePreviousButton = useCallback(()=> {
         setQuestionNumber(state => state - 1);
-    }, [setQuestionNumber]);
 
+    }, [setQuestionNumber]);
+    console.log(score);
     return (
         <section className="bottom">
             <div className="title-box">
                 <Title align={"center"}> 
-                    <em className="em"> { question[questionNumber - 1]} </em>
+                    <em className="em"> { questionNumber > question.length ? "To już wszystkie pytania" : 
+                    questionNumber + '. ' + question[questionNumber - 1] } </em>
                 </Title>    
 
             </div>
@@ -53,6 +55,7 @@ export function Question({ question, setQuestionNumber, questionNumber, user }) 
                     max="10"
                     step="0.5" 
                     value={range} 
+                    name={questionNumber}
                     className="slider"
                     onChange={(e)=> setRange(e.target.value)} 
                 />
@@ -69,7 +72,7 @@ export function Question({ question, setQuestionNumber, questionNumber, user }) 
                     Poprzedni
                 </button>     
                 <button className="facebook" onClick={handleNextButton}>
-                    { questionNumber === question.length ? "Zakończ" : "Następny" }
+                    { questionNumber > question.length ? "Zakończ" : "Następny" }
                 </button> 
             </div>
             <Link to="/home" className="Link" style={{paddingTop: "1rem"}}> Anuluj </Link>

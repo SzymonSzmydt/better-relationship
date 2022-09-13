@@ -10,12 +10,11 @@ import { TopHeader } from './top/TopHeader';
 import { Statistic } from './top/Statistic';
 import { BarChart } from './general/BarChart';
 
-const data = [9, 8.5, 7, 3, 4.5, 2];
-
 export function Ankiet() {
     const { user, logOut } = useUserAuth(); 
     const [ question, setQuestions ] = useState([]);
     const [ questionNumber, setQuestionNumber ] = useState(1);
+    const [ score, setScore ] = useState([]);
 
     useEffect(()=> {
         const getQuestionsFromServerList = async () => {
@@ -40,7 +39,7 @@ export function Ankiet() {
                         „Jeśli mówisz prawdę, nie musisz niczego pamiętać.”. &nbsp; Mark Twain
                     </i>
                 </Text> */}
-                <BarChart score={data} title={'Punktacja'}/>
+                <BarChart score={score}/>
                 <div className="top__statistic container">
                     <Statistic progress={questionNumber} text={"nr pytania"}/>
                     <Statistic progress={question.length} text={"ilość pytań"}/>
@@ -51,6 +50,8 @@ export function Ankiet() {
                 questionNumber={questionNumber} 
                 setQuestionNumber={setQuestionNumber}
                 user={user}
+                score={score}
+                setScore={setScore}
             />
         </>
     )
