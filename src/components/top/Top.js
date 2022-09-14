@@ -9,11 +9,11 @@ export function Top({ mainUser, partnerUser }) {
         <div className="top">
             <TopUser mainUser={mainUser} partnerUser={partnerUser}/>
             <div className="top__statistic container">
-                { mainUser !== undefined || mainUser !== [] || mainUser !== null ?
-                <Statistic progress={mainUser.score} text={"Mój postęp"}/> :
+                { !mainUser || mainUser !== {} ?
+                <Statistic progress={0} text={"Mój postęp"} symbols={true}/> :
                 <Spinner/> }
-                { partnerUser !== undefined || partnerUser !== [] || partnerUser !== null ?
-                <Statistic progress={partnerUser.score} text={"Postęp partnera"}/> :
+                { !partnerUser || partnerUser !== {} ?
+                <Statistic progress={0} text={"Postęp partnera"} /> :
                 <Statistic progress={0} text={"Brak danych partnera"}/> }
             </div>
         </div>

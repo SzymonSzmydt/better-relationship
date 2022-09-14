@@ -9,12 +9,13 @@ export function Bottom() {
     return (
         <div className="bottom">
             <Window>
-                <Title>ODKRYJ SIEBIE</Title>
-                <Text>
-                    <em>„Nasza wartość jest sumą naszych wartości”. Joe Batten</em>
-                </Text>
-            </Window>
-            
+                <div>
+                    <Title>ODKRYJ SIEBIE</Title>
+                    <Text>
+                        <em>„Nasza wartość jest sumą naszych wartości”. Joe Batten</em>
+                    </Text>
+                </div>        
+            </Window>           
             <Category/>
         </div>
     )

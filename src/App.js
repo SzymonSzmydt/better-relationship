@@ -13,21 +13,21 @@ function App() {
     <div className="App">
       <UserAuthContextProvider>
         <Routes>
-          {/* <Route path="/" element={ <Login/> }/> */}
-          <Route path="/" element={ 
-            // <ProtectedRoute>
+          <Route path="/" element={ <Login/> }/>
+          <Route path="/home" element={ 
+            <ProtectedRoute>
               <Main/>
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }/>
           <Route path="/search" element={ 
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <Search/>
-            // {/* </ProtectedRoute> */}
+            </ProtectedRoute>
           }/>
           <Route path="/ankiet" element={ 
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <Ankiet/>
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }/>
           <Route path="*" element={ <Login/> }/>
         </Routes>

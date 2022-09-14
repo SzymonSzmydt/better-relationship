@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-export function TopHeader({ logOut }) {
+export function TopHeader({ logOut, style }) {
     const navigate = useNavigate();
 
     const handleLogOut = async() => {
@@ -13,7 +13,7 @@ export function TopHeader({ logOut }) {
     }
 
     return (
-        <header className="header">
+        <header className="header" style={style}>
             <span className="material-symbols-outlined settings-icon" 
                     onClick={handleLogOut}>
                     power_settings_new

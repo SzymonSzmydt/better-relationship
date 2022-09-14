@@ -18,6 +18,8 @@
     font-size: 1.15rem;
     font-weight: 500;
     margin: 0 0 1rem;
+    padding: 0 0.5rem;
+    color: var(--color-dark);
 }
 
 .link {

@@ -22,7 +22,7 @@ const addUserToServerList = async(user) => {
 export function Main() {
     const { user } = useUserAuth(); 
     const [ mainUser, setMainUser ] = useState({});
-    const [ partnerUser, setPartnerUser ] = useState([]);
+    const [ partnerUser, setPartnerUser ] = useState({});
 
     useEffect(()=> {
         const getUserFromServerList = async () => {
@@ -32,8 +32,8 @@ export function Main() {
                 docSnap.data()[user.email] ?
                 setMainUser(docSnap.data()[user.email]) :
                 addUserToServerList(user);
-                if (docSnap.data()[user.email].partner) {
-                    let partner = docSnap.data()[user.email].partner;
+                const partner = docSnap.data()[user.email].partner;
+                if (partner) {
                     setPartnerUser(docSnap.data()[partner]);
                 }              
             } else {      

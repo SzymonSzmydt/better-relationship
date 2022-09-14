@@ -48,24 +48,24 @@
 }
 
 .search__results {
-    display: block;
     text-align: center;
-    width: 17rem;
     min-height: 6rem;
+    margin: 1rem;
     padding: 0.5rem;
     font-weight: 500;
     text-transform: lowercase;
     transform: all 0.3s;
+    background-color: var(--gradient-dark);
+    border-radius: var(--radius);
 }
 
 .search__result-li {
     cursor: pointer;
     padding: 0.25rem 0;
-    color: var(--gradient-dark);
+    color: var(--color-chart);
 }
 
 .search__result-li:hover {   
-    font-weight: 600;
     color: var(--color-green);
 }
 
