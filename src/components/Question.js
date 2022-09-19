@@ -3,39 +3,35 @@ import { useNavigate, Link } from 'react-router-dom';
 import { Title } from './general/Title';
 import { db } from './../context/firebase';
 import { setDoc, doc } from 'firebase/firestore';
+import { BottomWindow } from './general/BottomWindow';
+
+const addScoreToServer = async (user, score) => {
+    const date = new Date().toLocaleDateString();
+    await setDoc(doc(db, 'users', 'allUsers'), {
+        [user.email] : {
+            "score": {
+                [date] : score
+            }            
+        }
+     }, {merge: true});
+}
 
 export function Question({ score, setScore, question, setQuestionNumber, questionNumber, user }) {
     const navigate = useNavigate();
     const [ range, setRange ] = useState(0);
 
-    const addScoreToServer = useCallback(async () => {
-        const date = new Date().toLocaleDateString();
-        await setDoc(doc(db, 'users', 'allUsers'), {
-            [user.email] : {
-                "score": {
-                    [date] : score
-                }            
-            }
-         }, {merge: true});
-    }, [user.email, score]);
-
     const handleNextButton = useCallback(()=> {
-        setScore([...score, Number(range) ]);       
+        setScore([...score, range]);
         setQuestionNumber(state => state + 1);
        if (questionNumber > question.length) {
-            addScoreToServer();
-            navigate("/home", {replace: true});
+            addScoreToServer(user, score);
+            navigate("/home");
         }
-        setRange(5);
-    }, [score, range, setScore, navigate, setQuestionNumber, questionNumber, question.length, addScoreToServer]);
+        setRange(0);
+    }, [user, score, range, setScore, navigate, setQuestionNumber, questionNumber, question.length]);
 
-    const handlePreviousButton = useCallback(()=> {
-        setQuestionNumber(state => state - 1);
-
-    }, [setQuestionNumber]);
-    console.log(score);
     return (
-        <section className="bottom">
+        <BottomWindow>
             <div className="title-box">
                 <Title align={"center"}> 
                     <em className="em"> { questionNumber > question.length ? "To już wszystkie pytania" : 
@@ -43,7 +39,7 @@ export function Question({ score, setScore, question, setQuestionNumber, questio
                 </Title>    
 
             </div>
-            <div className="window-box">
+            <div className="window-box" style={{visibility: questionNumber > question.length ? "hidden" : "", transition: "visibility 0.4s"}}>
                 <Title align={"center"}> { range } </Title>
                 <div className="slidecontainer">
                 <span>
@@ -65,12 +61,6 @@ export function Question({ score, setScore, question, setQuestionNumber, questio
                 </div>
             </div>
             <div className="bottom-panel">
-                <button className="facebook" 
-                    onClick={handlePreviousButton}
-                    style={{ visibility: questionNumber === 1 ? "hidden" : ""}}
-                    >
-                    Poprzedni
-                </button>     
                 <button className="facebook" onClick={handleNextButton}>
                     { questionNumber > question.length ? "Zakończ" : "Następny" }
                 </button> 
@@ -81,6 +71,6 @@ export function Question({ score, setScore, question, setQuestionNumber, questio
                 <Link to="/home" className="Link" style={{fontSize: "1rem"}}> Anuluj </Link> 
                 i wróć później.
             </span>      
-        </section> 
+        </BottomWindow> 
     )
 }

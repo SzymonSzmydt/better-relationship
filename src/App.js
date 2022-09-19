@@ -27,7 +27,7 @@ function App() {
           <Route path="/ankiet" element={ 
             <ProtectedRoute>
               <Ankiet/>
-            </ProtectedRoute>
+            </ProtectedRoute> 
           }/>
           <Route path="*" element={ <Login/> }/>
         </Routes>

@@ -9,6 +9,7 @@ import { Text } from './general/Text';
 import { Title } from './general/Title';
 import { Spinner } from './general/Spinner';
 import { TopHeader } from './top/TopHeader';
+import { BottomWindow } from './general/BottomWindow';
 
 export function Search() {
     const [ usersFromServer, setUsersFromServer ] = useState([]);
@@ -44,19 +45,17 @@ export function Search() {
         await setDoc(doc(db, 'users', 'allUsers'), {
             [user.email] : {
                 partner: element
-            }
-         }, {merge: true});
-         await setDoc(doc(db, 'users', 'allUsers'), {
+            },
             [element] : {
                 partner: user.email
             }
          }, {merge: true});
-         navigate("/home", {replace: true});
+         navigate("/home");
     }, [user.email, navigate]);
 
     return (
         usersFromServer ?
-        <div className="bottom" style={{marginTop: "5rem"}}>
+        <BottomWindow style={{marginTop: "5rem"}}>
              <TopHeader 
                 user={user ? user : "loading"} 
                 logOut={logOut}
@@ -89,7 +88,7 @@ export function Search() {
                     </ul>
                 </div>  
             </div>        
-        </div>
+        </BottomWindow>
         : <Spinner/>
     )
 }

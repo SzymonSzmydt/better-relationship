@@ -3,11 +3,12 @@ import { Title } from './../general/Title';
 import { Text } from './../general/Text';
 import { Category } from './Category';
 import { Window } from './../general/Window';
+import { BottomWindow } from './../general/BottomWindow';
 
 export function Bottom() {
 
     return (
-        <div className="bottom">
+        <BottomWindow className="bottom">
             <Window>
                 <div>
                     <Title>ODKRYJ SIEBIE</Title>
@@ -17,6 +18,6 @@ export function Bottom() {
                 </div>        
             </Window>           
             <Category/>
-        </div>
+        </BottomWindow>
     )
 }

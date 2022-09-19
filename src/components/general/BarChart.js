@@ -7,7 +7,7 @@ export function BarChart({ score }) {
                 <VictoryAxis
                     tickValues={[0, 1, 2, 3, 4, 5, 6]}
                     tickFormat={['odp. 1', 'odp. 2',' odp.3', 'odp. 4', 'odp. 5', 'odp. 6']}
-                    style={{                       
+                    style={{                   
                         tickLabels: {fontSize: 12, fill: "var(--color-chart)"}, 
                      }}
                 />
@@ -31,8 +31,7 @@ export function BarChart({ score }) {
                             onLoad: { duration: 1000 }
                         }}
                         data={score}
-                    />
-                
+                    />              
             </VictoryChart>
     )
 }

@@ -8,9 +8,6 @@ export function UserIcon({ user, image }) {
         alignSelf: "baseline",
         opacity: 0.8
     };
-
-    console.log(user);
-
     return (
         <figure>
             { image ? 

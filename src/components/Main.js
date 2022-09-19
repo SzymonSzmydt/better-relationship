@@ -23,6 +23,8 @@ export function Main() {
     const { user } = useUserAuth(); 
     const [ mainUser, setMainUser ] = useState({});
     const [ partnerUser, setPartnerUser ] = useState({});
+    const [ mainUserScoreKeys, setMainUserScoreKeys ] = useState([]);
+    const [ partnerUserScoreKeys, setPartnerUserScoreKeys ] = useState([]);
 
     useEffect(()=> {
         const getUserFromServerList = async () => {
@@ -32,20 +34,30 @@ export function Main() {
                 docSnap.data()[user.email] ?
                 setMainUser(docSnap.data()[user.email]) :
                 addUserToServerList(user);
+                setMainUserScoreKeys(Object.keys(docSnap.data()[user.email].score));
                 const partner = docSnap.data()[user.email].partner;
                 if (partner) {
                     setPartnerUser(docSnap.data()[partner]);
+                    setPartnerUserScoreKeys(Object.keys(docSnap.data()[partner].score));
                 }              
             } else {      
                 console.log("There is no such documnet");  
             }
         }
         return ()=> getUserFromServerList();
-    }, []);
+    }, [user]);
+
+    console.log("mainUserScoreKeys: ", mainUserScoreKeys);
+    console.log("partnerUser: ",partnerUser);
 
     return ( mainUser ? 
          <>
-            <Top mainUser={mainUser} partnerUser={partnerUser}/>    
+            <Top 
+                mainUser={mainUser} 
+                partnerUser={partnerUser} 
+                mainUserScoreKeys={mainUserScoreKeys} 
+                partnerUserScoreKeys={partnerUserScoreKeys}
+            />    
             <Bottom/>
         </> :
         <Spinner/>

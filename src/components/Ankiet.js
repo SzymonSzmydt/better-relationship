@@ -9,6 +9,8 @@ import { Question } from './Question';
 import { TopHeader } from './top/TopHeader';
 import { Statistic } from './top/Statistic';
 import { BarChart } from './general/BarChart';
+import { TopWindow } from './general/TopWindow';
+import { Spinner } from './general/Spinner';
 
 export function Ankiet() {
     const { user, logOut } = useUserAuth(); 
@@ -31,20 +33,28 @@ export function Ankiet() {
 
     return (
         <>
-            <div className="top">
+            <TopWindow>
                 <TopHeader logOut={logOut}/>
-                {/* <Title> Odpowiedz na pytania</Title> */}
-                {/* <Text>
-                    <i>
-                        „Jeśli mówisz prawdę, nie musisz niczego pamiętać.”. &nbsp; Mark Twain
-                    </i>
-                </Text> */}
-                <BarChart score={score}/>
+                { question ? questionNumber === 1 ?
+                <div style={{padding: "0 1rem"}}>
+                    <Title color={"var(--color-facebook)"}> Odpowiedz na pytania</Title>
+                    <Text>
+                        <i>
+                            „Jeśli mówisz prawdę, nie musisz niczego pamiętać.”. &nbsp; Mark Twain
+                        </i>
+                    </Text>
+                </div> :
+                <div className="ankiet__chart-box">
+                    <BarChart score={score}/>
+                </div> :
+                <Spinner/>
+                }
+                
                 <div className="top__statistic container">
                     <Statistic progress={questionNumber} text={"nr pytania"}/>
                     <Statistic progress={question.length} text={"ilość pytań"}/>
                 </div>
-            </div>
+            </TopWindow>
             <Question 
                 question={question} 
                 questionNumber={questionNumber} 
