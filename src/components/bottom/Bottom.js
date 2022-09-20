@@ -5,7 +5,7 @@ import { Category } from './Category';
 import { Window } from './../general/Window';
 import { BottomWindow } from './../general/BottomWindow';
 
-export function Bottom() {
+export function Bottom({ mainUser, partnerUser, mainUserScoreKeys, partnerUserScoreKeys }) {
 
     return (
         <BottomWindow className="bottom">
@@ -17,7 +17,12 @@ export function Bottom() {
                     </Text>
                 </div>        
             </Window>           
-            <Category/>
+            <Category
+                mainUser={mainUser} 
+                partnerUser={partnerUser} 
+                mainUserScoreKeys={mainUserScoreKeys} 
+                partnerUserScoreKeys={partnerUserScoreKeys}
+            />
         </BottomWindow>
     )
 }

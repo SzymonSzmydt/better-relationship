@@ -15,7 +15,7 @@ export function Search() {
     const [ usersFromServer, setUsersFromServer ] = useState([]);
     const [ inputTyping, setInputTyping ] = useState('');
     const [ searchingEmail, setSearchingEmail ] = useState([]);
-    const { user, logOut } = useUserAuth(); 
+    const { user } = useUserAuth(); 
     const navigate = useNavigate();
 
     useEffect(()=> {
@@ -56,12 +56,7 @@ export function Search() {
     return (
         usersFromServer ?
         <BottomWindow style={{marginTop: "5rem"}}>
-             <TopHeader 
-                user={user ? user : "loading"} 
-                logOut={logOut}
-                style={{backgroundColor: "var(--gradient-dark)"}}
-                />
-
+            <TopHeader style={{backgroundColor: "var(--gradient-dark)"}}/>
             <Title>Znajdź partnera</Title>
             <Text>
                 Razem łatwiej pokonacie trudności.

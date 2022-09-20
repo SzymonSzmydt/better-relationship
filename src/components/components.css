@@ -111,3 +111,16 @@
 .ankiet__chart-box {
     height: 75%;
 }
+
+.table {
+    width: 10rem;
+    border: 1px solid var(--gradient-dark);
+    border-radius: var(--radius);
+    padding: 1rem;
+}
+
+.table-td {
+    text-align: center;
+    border-bottom: 1px solid var(--gradient-dark);
+    padding: 1rem;
+}

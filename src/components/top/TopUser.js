@@ -4,11 +4,11 @@ import { UserIcon } from './../general/UserIcon';
 import { useUserAuth } from "./../../context/UserAuthContext";
 
 export function TopUser({ mainUser, partnerUser }) {
-    const { user, logOut } = useUserAuth();
+    const { user } = useUserAuth();
 
     return (
         <>
-            <TopHeader user={user ? user : "loading"} logOut={logOut}/>
+            <TopHeader />
             <div className="top-persons">
                 <UserIcon user={mainUser.name} image={user ? user.photoURL : ''}/>
                 { !mainUser.partner ? <Partner/> :

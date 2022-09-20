@@ -1,12 +1,15 @@
 import { useNavigate } from 'react-router-dom';
+import { useUserAuth } from './../../context/UserAuthContext';
 
-export function TopHeader({ logOut, style }) {
+
+export function TopHeader({style}) {
     const navigate = useNavigate();
+    const { logOut } = useUserAuth(); 
 
     const handleLogOut = async() => {
         try {
             await logOut();
-            navigate("/", true);
+            navigate("/", {replace: true});
         } catch (err) {
             console.log(err.message);
         }
@@ -15,7 +18,7 @@ export function TopHeader({ logOut, style }) {
     return (
         <header className="header" style={style}>
             <span className="material-symbols-outlined settings-icon" 
-                    onClick={handleLogOut}>
+                    onClick={()=> handleLogOut}>
                     power_settings_new
             </span>
         </header>

@@ -47,9 +47,6 @@ export function Main() {
         return ()=> getUserFromServerList();
     }, [user]);
 
-    console.log("mainUserScoreKeys: ", mainUserScoreKeys);
-    console.log("partnerUser: ",partnerUser);
-
     return ( mainUser ? 
          <>
             <Top 
@@ -58,7 +55,12 @@ export function Main() {
                 mainUserScoreKeys={mainUserScoreKeys} 
                 partnerUserScoreKeys={partnerUserScoreKeys}
             />    
-            <Bottom/>
+            <Bottom
+                mainUser={mainUser} 
+                partnerUser={partnerUser} 
+                mainUserScoreKeys={mainUserScoreKeys} 
+                partnerUserScoreKeys={partnerUserScoreKeys}
+            />
         </> :
         <Spinner/>
         )

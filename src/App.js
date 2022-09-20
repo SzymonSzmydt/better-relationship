@@ -6,6 +6,7 @@ import { UserAuthContextProvider } from './context/UserAuthContext';
 import { ProtectedRoute } from './context/ProtectedRoute';
 import { Search } from './components/Search';
 import { Ankiet } from './components/Ankiet';
+import { Progress } from './components/Progress';
 
 function App() {
   
@@ -27,6 +28,11 @@ function App() {
           <Route path="/ankiet" element={ 
             <ProtectedRoute>
               <Ankiet/>
+            </ProtectedRoute> 
+          }/>
+          <Route path="/my-progress" element={ 
+            <ProtectedRoute>
+              <Progress/>
             </ProtectedRoute> 
           }/>
           <Route path="*" element={ <Login/> }/>

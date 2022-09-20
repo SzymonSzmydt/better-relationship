@@ -13,7 +13,7 @@ import { TopWindow } from './general/TopWindow';
 import { Spinner } from './general/Spinner';
 
 export function Ankiet() {
-    const { user, logOut } = useUserAuth(); 
+    const { user } = useUserAuth(); 
     const [ question, setQuestions ] = useState([]);
     const [ questionNumber, setQuestionNumber ] = useState(1);
     const [ score, setScore ] = useState([]);
@@ -34,7 +34,7 @@ export function Ankiet() {
     return (
         <>
             <TopWindow>
-                <TopHeader logOut={logOut}/>
+                <TopHeader />
                 { question ? questionNumber === 1 ?
                 <div style={{padding: "0 1rem"}}>
                     <Title color={"var(--color-facebook)"}> Odpowiedz na pytania</Title>
