@@ -1,6 +1,7 @@
 import { VictoryChart, VictoryLine } from 'victory';
 
-export function LineChart({data}) {
+export function LineChart({ userData, partnerData }) {
+
     return (
         <VictoryChart>
             <VictoryLine 
@@ -12,7 +13,13 @@ export function LineChart({data}) {
                     duration: 2000,
                     onLoad: { duration: 1000 }
                   }}
-                data={data}
+                data={userData}
+            />
+            <VictoryLine 
+                data={partnerData}
+                style={{
+                    data: { stroke: "var(--gradient-dark)" },
+                  }} 
             />
         </VictoryChart>
     )

@@ -113,7 +113,6 @@
 }
 
 .table {
-    width: 10rem;
     border: 1px solid var(--gradient-dark);
     border-radius: var(--radius);
     padding: 1rem;
@@ -121,6 +120,12 @@
 
 .table-td {
     text-align: center;
-    border-bottom: 1px solid var(--gradient-dark);
+    border-bottom: 1px solid var(--color-facebook);
+    border-right: 1px solid var(--color-facebook);
     padding: 1rem;
+}
+
+.td-bg {
+    font-size: 0.8rem;
+    background-color: var(--color-accent);
 }

@@ -18,7 +18,7 @@ export function TopHeader({style}) {
     return (
         <header className="header" style={style}>
             <span className="material-symbols-outlined settings-icon" 
-                    onClick={()=> handleLogOut}>
+                    onClick={()=> handleLogOut()}>
                     power_settings_new
             </span>
         </header>
