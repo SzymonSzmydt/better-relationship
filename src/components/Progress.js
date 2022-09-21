@@ -57,7 +57,9 @@ export function Progress() {
                     } 
                     </tbody>
                 </table>
-                                    
+                <span style={{fontSize: "1rem", paddingTop: "1rem"}}>
+                    <Link to="/home" className="Link" style={{fontSize: "1rem"}}> Wróć </Link> 
+                </span>     
             </BottomWindow>
         </>
     )
