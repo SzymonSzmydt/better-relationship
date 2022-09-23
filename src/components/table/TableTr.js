@@ -1,9 +1,9 @@
 export function TableTr({ lp, userScore, partnerScore}) {
     return (
         <tr>
-            <td className="table-td"> { lp + 1 } </td>
-            <td className="table-td"> { userScore } </td>
-            <td className="table-td"> { partnerScore } </td>
+            { userScore ? <td className="table-td"> { lp + 1 } </td> : null }
+            { userScore ? <td className="table-td"> { userScore.toFixed(2) } </td> : null }
+            { partnerScore ? <td className="table-td"> { partnerScore.toFixed(2) } </td> : null }
         </tr>
     )
 }

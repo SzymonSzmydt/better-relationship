@@ -3,7 +3,7 @@ export function TitleTable({ title, first, second, firstAnswer, secondAnswer }) 
         <table className="table">
             <thead>
                 <tr>
-                    <th colspan="3" className="table-td td-bg"> { title } </th>
+                    <th colSpan="3" className="table-td td-bg"> { title } </th>
                 </tr>
             </thead>
             <tbody>

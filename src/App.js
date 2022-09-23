@@ -30,7 +30,7 @@ function App() {
               <Ankiet/>
             </ProtectedRoute> 
           }/>
-          <Route path="/my-progress" element={ 
+          <Route path="/progress" element={ 
             <ProtectedRoute>
               <Progress/>
             </ProtectedRoute> 

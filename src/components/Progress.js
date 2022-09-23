@@ -1,4 +1,7 @@
 import { useLocation, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { db } from './../context/firebase';
+import { doc, getDoc } from 'firebase/firestore';
 
 import { BottomWindow } from './general/BottomWindow';
 import { TopHeader } from './top/TopHeader';
@@ -8,6 +11,7 @@ import { Window } from './general/Window';
 import { Text } from './general/Text';
 import { TableTr } from './table/TableTr';
 import { StandardTable } from './table/StandardTable';
+import { TitleTable } from './table/TitleTable';
 
 const makeAgoodObjectForChart = (keys, data) => {
     if (data) {
@@ -18,17 +22,31 @@ const makeAgoodObjectForChart = (keys, data) => {
 }
 
 const makeAgoodObjectForMap = (userScore, partnerScore) => {
-    if (userScore.length > 0) {
-        const getValuesFromUser = Object.values(userScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 10);
-        const getValuesFromPartner = Object.values(partnerScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 10);
-        return getValuesFromUser.map( (values, index) => ({user: values, partner: getValuesFromPartner[index]}));
-    }
-    return {user: "brak danych", partner: "brak danych"}
+    const getValuesFromUser = userScore ? 
+        Object.values(userScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : "Brak danych";
+    const getValuesFromPartner = partnerScore ? 
+        Object.values(partnerScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : 0;
+    return getValuesFromUser.map( (values, index) => ({user: values, partner: getValuesFromPartner[index] }));
 }
 
 export function Progress() {
     const { state } = useLocation();
+    const [ question, setQuestions ] = useState([]);
     const { mainData, partnerData, mainKeys, partnerKeys } = {...state };
+
+    useEffect(()=> {
+        const getStandardQuestionsFromServerList = async () => {
+            const docSnap = await getDoc(doc(db, 'users', 'ankiet'));
+            if (docSnap.exists()) {
+                setQuestions(docSnap.data().standard);       
+            } else {      
+                console.log("There is no such documnet");  
+            }
+        }
+        return ()=> getStandardQuestionsFromServerList();
+    }, []);
+
+    console.log("mainData", mainKeys);
 
     return (
         <>
@@ -45,18 +63,30 @@ export function Progress() {
                         partnerData={makeAgoodObjectForChart( partnerKeys, partnerData.score )}
                         />
                 </Window>
-                <Text> Poniżej znajduje się uśredniona wartość waszych odpowiedzi z badań. </Text>
+                { mainKeys.length > 0 ?
+                <Text> Poniżej znajduje się uśredniona wartość waszych odpowiedzi z badań. </Text> : null }
+                { mainKeys.length > 0 ?
                 <StandardTable first={"Numer badania"} second={mainData.name} third={partnerData.name}>
-                    {
-                    mainData.score.length > 0 ? 
+                    {     
                     makeAgoodObjectForMap(mainData.score, partnerData.score).map((e, i) => (
-                    <TableTr/>
+                    <TableTr key={e.user + 1} lp={i} userScore={e.user} partnerUser={e.partner}/>
+                    ))
+                    }
+                </StandardTable> : null }             
+                    { 
+                    mainData.score.length > 0 ?
+                    question.map((e, i) => (
+                        <TitleTable 
+                            key={e.slice(0, 2) + i} 
+                            title={e} 
+                            first={mainData.name}
+                            second={partnerData.name}
+                        />
                     )) : null
                     }
-                </StandardTable>
-                <span style={{fontSize: "1rem", paddingTop: "1rem"}}>
+                <span style={{fontSize: "1rem", padding: "1rem"}}>
                     <Link to="/home" className="Link" style={{fontSize: "1rem"}}> Wróć </Link> 
-                </span>     
+                </span>  
             </BottomWindow>
         </>
     )

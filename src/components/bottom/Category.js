@@ -19,7 +19,7 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
             <CategoryBtn 
                 bgcolor="var(--color-btn-category)" 
                 text="Stan relacji" align="center"
-                onClick={()=> navigate("/my-progress", {
+                onClick={()=> navigate("/progress", {
                     state: {
                         mainData: mainUser, 
                         partnerData: partnerUser, 
