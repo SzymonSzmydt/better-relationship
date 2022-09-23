@@ -1,0 +1,27 @@
+.table {
+    width: 85%;
+    border: 1px solid var(--gradient-dark);
+    border-radius: var(--radius);
+    padding: 0.5rem;
+    margin: 0.5rem 1rem;
+}
+
+.table-td {
+    font-size: 0.8rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-facebook);
+    padding: 0.5rem;
+}
+
+.td__border {
+    border-right: 1px solid var(--color-facebook);
+    border-left: 1px solid var(--color-facebook);
+}
+
+.td-bg {
+    background-color: #C9DC8D;
+}
+
+.td-bg-a {
+    background-color: #D9EDDF;
+}

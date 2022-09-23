@@ -25,8 +25,8 @@ const makeAgoodObjectForMap = (userScore, partnerScore) => {
     const getValuesFromUser = userScore ? 
         Object.values(userScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : "Brak danych";
     const getValuesFromPartner = partnerScore ? 
-        Object.values(partnerScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : 0;
-    return getValuesFromUser.map( (values, index) => ({user: values, partner: getValuesFromPartner[index] }));
+        Object.values(partnerScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : "Brak danych";
+    return getValuesFromUser.map( (values, index) => ({user: values, partner: getValuesFromPartner[index] }) );
 }
 
 export function Progress() {
@@ -46,8 +46,6 @@ export function Progress() {
         return ()=> getStandardQuestionsFromServerList();
     }, []);
 
-    console.log("mainData", mainKeys);
-
     return (
         <>
             <TopHeader style={{position: "static", backgroundColor: "var(--gradient-dark)"}}/>
@@ -64,23 +62,25 @@ export function Progress() {
                         />
                 </Window>
                 { mainKeys.length > 0 ?
-                <Text> Poniżej znajduje się uśredniona wartość waszych odpowiedzi z badań. </Text> : null }
+                <Text> Poniżej znajduje się porównanie z ostatniego sprawdzania. </Text> : null }
                 { mainKeys.length > 0 ?
-                <StandardTable first={"Numer badania"} second={mainData.name} third={partnerData.name}>
+                <StandardTable first={"Pytanie"} second={mainData.name} third={partnerData.name}>
                     {     
                     makeAgoodObjectForMap(mainData.score, partnerData.score).map((e, i) => (
-                    <TableTr key={e.user + 1} lp={i} userScore={e.user} partnerUser={e.partner}/>
+                    <TableTr key={e.user + 1} lp={i} userScore={e.user} partnerScore={e.partner}/>
                     ))
                     }
                 </StandardTable> : null }             
                     { 
-                    mainData.score.length > 0 ?
+                    mainData.score ?
                     question.map((e, i) => (
                         <TitleTable 
                             key={e.slice(0, 2) + i} 
                             title={e} 
                             first={mainData.name}
                             second={partnerData.name}
+                            firstAnswer={"sds"}
+                            secondAnswer={"sds"}
                         />
                     )) : null
                     }

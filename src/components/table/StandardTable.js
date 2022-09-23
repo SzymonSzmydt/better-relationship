@@ -1,3 +1,5 @@
+import "./table.css";
+
 export function StandardTable({ first, second, third, children}) {
     return (
         <table className="table">

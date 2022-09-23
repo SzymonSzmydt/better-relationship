@@ -8,11 +8,11 @@ export function TitleTable({ title, first, second, firstAnswer, secondAnswer }) 
             </thead>
             <tbody>
                 <tr>
-                    <th className="table-td td-bg"> { first } </th>
+                    <td className="table-td td-bg-a"> { first } </td>
                     <td className="table-td"> { firstAnswer } </td>
                 </tr>
                 <tr>
-                    <th className="table-td td-bg"> { second } </th>
+                    <td className="table-td td-bg-a"> { second } </td>
                     <td className="table-td"> { secondAnswer } </td>
                 </tr>
             </tbody>
