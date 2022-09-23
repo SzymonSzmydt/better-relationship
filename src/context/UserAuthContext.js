@@ -2,7 +2,7 @@ import { createContext, useState, useEffect, useContext } from "react";
 import {    signOut,
             onAuthStateChanged,
             GoogleAuthProvider,
-            signInWithRedirect 
+            signInWithPopup
         } from "firebase/auth";
 import { auth } from './firebase';
 
@@ -13,7 +13,7 @@ export function UserAuthContextProvider({ children }) {
 
     function googleSignIn() {
         const googleAuthProvider = new GoogleAuthProvider();
-        return signInWithRedirect(auth, googleAuthProvider);
+        return signInWithPopup(auth, googleAuthProvider);
     }
 
     function logOut() {

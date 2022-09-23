@@ -1,25 +1,34 @@
+import { useLocation, Link } from 'react-router-dom';
+
 import { BottomWindow } from './general/BottomWindow';
 import { TopHeader } from './top/TopHeader';
 import { Title } from './general/Title';
-import { LineChart } from './general/LineChart';
+import { LineChart } from './charts/LineChart';
 import { Window } from './general/Window';
-import { useLocation, Link } from 'react-router-dom';
 import { Text } from './general/Text';
+import { TableTr } from './table/TableTr';
+import { StandardTable } from './table/StandardTable';
 
 const makeAgoodObjectForChart = (keys, data) => {
-    const getValuesFromData = Object.values(data).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 10);
-    return getValuesFromData.map( (values, index) => ({x: keys[index], y: values}));
+    if (data) {
+        const getValuesFromData = Object.values(data).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 10);
+        return getValuesFromData.map( (values, index) => ({x: keys[index], y: values}));
+    }
+    return null
 }
 
 const makeAgoodObjectForMap = (userScore, partnerScore) => {
-    const getValuesFromUser = Object.values(userScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 10);
-    const getValuesFromPartner = Object.values(partnerScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 10);
-    return getValuesFromUser.map( (values, index) => ({user: values, partner: getValuesFromPartner[index]}));
+    if (userScore.length > 0) {
+        const getValuesFromUser = Object.values(userScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 10);
+        const getValuesFromPartner = Object.values(partnerScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 10);
+        return getValuesFromUser.map( (values, index) => ({user: values, partner: getValuesFromPartner[index]}));
+    }
+    return {user: "brak danych", partner: "brak danych"}
 }
 
 export function Progress() {
     const { state } = useLocation();
-    const { user, partner, mainKeys, partnerKeys } = {...state };
+    const { mainData, partnerData, mainKeys, partnerKeys } = {...state };
 
     return (
         <>
@@ -32,31 +41,19 @@ export function Progress() {
                 </Text>
                 <Window>
                     <LineChart 
-                        userData={makeAgoodObjectForChart( mainKeys, user.score )}
-                        partnerData={makeAgoodObjectForChart( partnerKeys, partner.score )}
+                        userData={makeAgoodObjectForChart( mainKeys, mainData.score )}
+                        partnerData={makeAgoodObjectForChart( partnerKeys, partnerData.score )}
                         />
                 </Window>
                 <Text> Poniżej znajduje się uśredniona wartość waszych odpowiedzi z badań. </Text>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <td className="table-td td-bg"> <b>Numer badania</b> </td>
-                            <td className="table-td td-bg" style={{color: "var(--color-btn-category)"}}> { user.name } </td>
-                            <td className="table-td td-bg" style={{color: "var(--gradient-dark)"}}> { partner.name }</td>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <StandardTable first={"Numer badania"} second={mainData.name} third={partnerData.name}>
                     {
-                    makeAgoodObjectForMap(user.score, partner.score).map((e, i) => (
-                        <tr key={e + i}>
-                            <td className="table-td"> { i + 1 } </td>
-                            <td className="table-td"> { e.user } </td>
-                            <td className="table-td"> { e.partner } </td>
-                        </tr>
-                    ))
-                    } 
-                    </tbody>
-                </table>
+                    mainData.score.length > 0 ? 
+                    makeAgoodObjectForMap(mainData.score, partnerData.score).map((e, i) => (
+                    <TableTr/>
+                    )) : null
+                    }
+                </StandardTable>
                 <span style={{fontSize: "1rem", paddingTop: "1rem"}}>
                     <Link to="/home" className="Link" style={{fontSize: "1rem"}}> Wróć </Link> 
                 </span>     

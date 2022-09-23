@@ -21,8 +21,8 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
                 text="Stan relacji" align="center"
                 onClick={()=> navigate("/my-progress", {
                     state: {
-                        user: mainUser, 
-                        partner: partnerUser, 
+                        mainData: mainUser, 
+                        partnerData: partnerUser, 
                         mainKeys: mainUserScoreKeys, 
                         partnerKeys: partnerUserScoreKeys
                     }

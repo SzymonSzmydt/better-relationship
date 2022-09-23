@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { db } from './../context/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-
 import { useUserAuth } from './../context/UserAuthContext';
+
 import { Title } from './general/Title';
 import { Text } from './general/Text';
 import { Question } from './Question';
 import { TopHeader } from './top/TopHeader';
 import { Statistic } from './top/Statistic';
-import { BarChart } from './general/BarChart';
+import { BarChart } from './charts/BarChart';
 import { TopWindow } from './general/TopWindow';
 import { Spinner } from './general/Spinner';
 
