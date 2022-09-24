@@ -3,6 +3,7 @@ import { Statistic } from './Statistic';
 import { Spinner } from './../general/Spinner';
 import { TopUser } from './TopUser';
 import { TopWindow } from './../general/TopWindow';
+import { TopHeader } from './TopHeader';
 
 const mainStatisticsPoints = (score, keys) => {
     const result = keys.length === 1 ? 0 : keys.length > 1 ?
@@ -15,6 +16,7 @@ export function Top({ mainUser, partnerUser, mainUserScoreKeys, partnerUserScore
 
     return (
         <TopWindow>
+            <TopHeader/>
             <TopUser mainUser={mainUser} partnerUser={partnerUser}/>
             <div className="top__statistic container">
                 { !mainUser || mainUser !== {} ?

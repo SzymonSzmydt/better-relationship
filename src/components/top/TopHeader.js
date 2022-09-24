@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useUserAuth } from './../../context/UserAuthContext';
 
 
@@ -16,10 +16,13 @@ export function TopHeader({style}) {
     }
 
     return (
-        <header className="header" style={style}>
+        <header className="header">
             <span className="material-symbols-outlined settings-icon" 
                     onClick={()=> handleLogOut()}>
                     power_settings_new
+            </span>
+            <span>
+                <Link to="/home" className="logo">two Of us</Link>
             </span>
         </header>
     )

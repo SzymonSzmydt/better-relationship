@@ -62,7 +62,7 @@ export function Progress() {
                         />
                 </Window>
                 { mainKeys.length > 0 ?
-                <Text> Poniżej znajduje się porównanie z ostatniego sprawdzania. </Text> : null }
+                <Text> Poniżej znajduje się porównanie waszych ostatnich odpowiedzi. </Text> : null }
                 { mainKeys.length > 0 ?
                 <StandardTable first={"Pytanie"} second={mainData.name} third={partnerData.name}>
                     {     

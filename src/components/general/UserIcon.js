@@ -1,4 +1,3 @@
-import { Title } from './../general/Title';
 import { Spinner } from './Spinner';
 
 export function UserIcon({ user, image }) {
@@ -14,9 +13,9 @@ export function UserIcon({ user, image }) {
             <img src={image} alt="User" style={style} /> :
             <Spinner/> }
             <figcaption>
-                <Title align={"center"} color={"var(--color-bg)"}>
+                <p style={{textAlign: "center", color: "var(--color-bg)", marginTop: "0"}}>
                     { user ? user.split(' ', 1) : " " }
-                </Title>
+                </p>
             </figcaption>
         </figure>
     )

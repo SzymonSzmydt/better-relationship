@@ -4,7 +4,7 @@ export function Statistic({ progress, text, symbols }) {
         <div className="top__statistic-section">
             <div className="p-normal">
                 <span 
-                    style={{color: "var(--color-green)"}}>
+                    style={{color: "var(--color-yellow)"}}>
                     { symbols ? progress > 0 ? 
                         "+ " + progress + " %" : 
                         progress < 0 ? progress + " %" : progress : progress  }

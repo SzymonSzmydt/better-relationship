@@ -1,8 +1,4 @@
 .top {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     height: 35%;
     color: var(--color-bg);
     background: rgb(2,0,36);
@@ -17,20 +13,35 @@
 }
 
 .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
     width: 100%;
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 0;
     padding: 0 0 0.25rem;
+    background-color: rgba(158, 57, 212, 0.9);
 }
 
-.top-persons {
+.logo {
+    text-decoration: none;
+    color: var(--color-yellow);
+    font-family: var(--Great);
+    font-size: 1.5rem;
+    padding: 0 2rem;
+}
+
+.top-user {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .settings-icon {
     cursor: pointer;
-    padding: 0.5rem 1rem 0;
+    padding: 0.5rem 1rem 0.25rem;
     font-size: 2rem;
     color: var(--color-bg);
     transition: color 0.4s ease-in-out;
