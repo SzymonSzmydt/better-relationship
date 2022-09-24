@@ -3,28 +3,19 @@ import GoogleButton from 'react-google-button'
 import { Title } from './general/Title';
 import { useUserAuth } from './../context/UserAuthContext';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from "react"
 
 export function Login() {
-    const { googleSignIn, user } = useUserAuth();
+    const { googleSignIn } = useUserAuth();
     const navigate = useNavigate();
-    const [ isLogged, setIsLogged ] = useState(false);
 
     const handleGoogleClick = async() => {
         try {
             await googleSignIn();
             navigate('/home');
         } catch (err) {
-            console.log(console.message);
+            console.log( err.message);
         }
-    }
-
-    // useEffect(()=> {
-    //     const redirect =() => {
-    //         navigate('/home');
-    //     }
-    //     return () => redirect();
-    // }, [isLogged, user]);
+    }          
 
     return (
         <div className="login">

@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBxd8YFTYHMqPyEv8MhvGbHlXere37wyaQ",
-  authDomain: "better-relation.firebaseapp.com",
+  authDomain: "northshape.eu",
   projectId: "better-relation",
   storageBucket: "better-relation.appspot.com",
   messagingSenderId: "161413746064",
