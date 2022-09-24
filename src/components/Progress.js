@@ -79,8 +79,8 @@ export function Progress() {
                             title={e} 
                             first={mainData.name}
                             second={partnerData.name}
-                            firstAnswer={"sds"}
-                            secondAnswer={"sds"}
+                            firstAnswer={mainKeys ? mainData.score[mainKeys[mainKeys.length - 1]][i] : "Brak danych"}
+                            secondAnswer={partnerKeys ? partnerData.score[partnerKeys[partnerKeys.length - 1]][i] : "Brak danych"}
                         />
                     )) : null
                     }

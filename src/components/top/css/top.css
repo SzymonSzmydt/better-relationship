@@ -2,8 +2,14 @@
     height: 35%;
     color: var(--color-bg);
     background: linear-gradient(0deg, var(--gradient-light) 0%, var(--gradient-dark) 40%);
-    border-radius: 0 0 2rem 2rem;
+    border-radius: 0;
     position: relative;
+}
+
+@media screen and (max-width: 520px) {
+    .top {
+     border-radius: 0 0 2rem 2rem;
+    }
 }
 
 .container {
