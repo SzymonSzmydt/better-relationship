@@ -3,13 +3,12 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBxd8YFTYHMqPyEv8MhvGbHlXere37wyaQ",
-  authDomain: "northshape.eu",
-  projectId: "better-relation",
-  storageBucket: "better-relation.appspot.com",
-  messagingSenderId: "161413746064",
-  appId: "1:161413746064:web:4ef81d9cfd74c2b83a7715",
-  measurementId: "G-F9M3LLZT9Q"
+  apiKey: "AIzaSyBC4vp-zJYcc94Poqifii4pHCtyzJKHOBw",
+  authDomain: "twoofus-d95e1.firebaseapp.com",
+  projectId: "twoofus-d95e1",
+  storageBucket: "twoofus-d95e1.appspot.com",
+  messagingSenderId: "850339454573",
+  appId: "1:850339454573:web:0f0d8449729486184c6964"
 };
 
 export const app = initializeApp(firebaseConfig);

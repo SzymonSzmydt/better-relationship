@@ -1,9 +1,14 @@
+import React, { useState } from 'react';
+
 export function TableTr({ lp, userScore, partnerScore}) {
+    const [ firstScore ] = useState(userScore);
+    const [ secondScore ] = useState(partnerScore);
+
     return (
         <tr>
-            { userScore ? <td className="table-td"> { lp + 1 } </td> : null }
-            { userScore ? <td className="table-td td__border"> { userScore.toFixed(2) } </td> : null }
-            { partnerScore ? <td className="table-td"> { partnerScore.toFixed(2) } </td> : null }
+            { <td className="table-td"> { lp + 1 } </td> }
+            { <td className="table-td td__border"> { !firstScore ? null : firstScore.toFixed(2) } </td> }
+            { <td className="table-td"> { !secondScore ? null : secondScore.toFixed(2) } </td> }
         </tr>
     )
 }

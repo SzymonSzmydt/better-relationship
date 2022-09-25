@@ -36,7 +36,7 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
                         bgcolor={"var(--color-btn-category)"} 
                         text={daysLeft > 0 ? daysLeft === 1 ? `Wróć jutro` : `Wróć za ${daysLeft} dni` : "Wykonaj Test"}
                         align={"center"}
-                        onClick={()=> mainUser ? checkDateFromNow(mainUserScoreKeys) : null}
+                        onClick={()=> mainUserScoreKeys.length === 0 ? navigate("/ankiet") : checkDateFromNow(mainUserScoreKeys)}
                         >
                         <span className="material-symbols-outlined font">quiz</span>
                     </CategoryBtn>

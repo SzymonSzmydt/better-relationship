@@ -23,9 +23,9 @@ const makeAgoodObjectForChart = (keys, data) => {
 
 const makeAgoodObjectForMap = (userScore, partnerScore) => {
     const getValuesFromUser = userScore ? 
-        Object.values(userScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : "Brak danych";
+        Object.values(userScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : 0;
     const getValuesFromPartner = partnerScore ? 
-        Object.values(partnerScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : "Brak danych";
+        Object.values(partnerScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : 0;
     return getValuesFromUser.map( (values, index) => ({user: values, partner: getValuesFromPartner[index] }) );
 }
 
@@ -47,8 +47,10 @@ export function Progress() {
     }, []);
 
     return (
-        <>
-            <TopHeader style={{position: "static", backgroundColor: "var(--gradient-dark)"}}/>
+        <>  
+            <div style={{height: "2rem", marginBottom: "2rem"}}>
+                <TopHeader/>
+            </div>        
             <BottomWindow>
                 <Title> Tak wyglądają Twoje postępy </Title>
                 <Text>
@@ -64,7 +66,7 @@ export function Progress() {
                 { mainKeys.length > 0 ?
                 <Text> Poniżej znajduje się porównanie waszych ostatnich odpowiedzi. </Text> : null }
                 { mainKeys.length > 0 ?
-                <StandardTable first={"Pytanie"} second={mainData.name} third={partnerData.name}>
+                <StandardTable text={"Pytanie"} second={mainData.name} third={partnerData.name}>
                     {     
                     makeAgoodObjectForMap(mainData.score, partnerData.score).map((e, i) => (
                     <TableTr key={e.user + 1} lp={i} userScore={e.user} partnerScore={e.partner}/>
@@ -79,8 +81,8 @@ export function Progress() {
                             title={e} 
                             first={mainData.name}
                             second={partnerData.name}
-                            firstAnswer={mainKeys ? mainData.score[mainKeys[mainKeys.length - 1]][i] : "Brak danych"}
-                            secondAnswer={partnerKeys ? partnerData.score[partnerKeys[partnerKeys.length - 1]][i] : "Brak danych"}
+                            firstAnswer={mainKeys.length > 0 ? mainData.score[mainKeys[mainKeys.length - 1]][i] : "Brak danych"}
+                            secondAnswer={partnerKeys.length > 0 ? partnerData.score[partnerKeys[partnerKeys.length - 1]][i] : "Brak danych"}
                         />
                     )) : null
                     }

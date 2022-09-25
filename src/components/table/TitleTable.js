@@ -1,4 +1,9 @@
+import React, { useState } from 'react';
+
 export function TitleTable({ title, first, second, firstAnswer, secondAnswer }) {
+    const [ firstName ] = useState(first);
+    const [ secondName ] = useState(second);
+
     return (
         <table className="table">
             <thead>
@@ -8,11 +13,11 @@ export function TitleTable({ title, first, second, firstAnswer, secondAnswer }) 
             </thead>
             <tbody>
                 <tr>
-                    <td className="table-td td-bg-a"> { first } </td>
+                    <td className="table-td td-bg-a"> { firstName } </td>
                     <td className="table-td"> { firstAnswer } </td>
                 </tr>
                 <tr>
-                    <td className="table-td td-bg-a"> { second } </td>
+                    <td className="table-td td-bg-a"> { secondName } </td>
                     <td className="table-td"> { secondAnswer } </td>
                 </tr>
             </tbody>

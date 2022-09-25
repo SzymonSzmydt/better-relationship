@@ -2,24 +2,32 @@ import "./components.css";
 import GoogleButton from 'react-google-button'
 import { Title } from './general/Title';
 import { useUserAuth } from './../context/UserAuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useState, useCallback } from 'react';
+import { Spinner } from './general/Spinner';
+
 
 export function Login() {
     const { googleSignIn } = useUserAuth();
-    const navigate = useNavigate();
+    const [ isLoading, setIsLoading ] = useState(true);
 
-    const handleGoogleClick = async() => {
+
+    const handleGoogleClick = useCallback(async() => {
         try {
-            await googleSignIn();
-            navigate('/home');
+            await googleSignIn();     
         } catch (err) {
             console.log( err.message);
         }
-    }          
+    }, );     
+    
+    const redirect = useCallback(() => {
+            setIsLoading(false);
+            handleGoogleClick();
+    }, [handleGoogleClick]);       
 
     return (
+        isLoading ?
         <div className="login">
-            <div className="intro-text">
+                <div className="intro-text">
                 <span className="intro-1">
                     Wzmacniając swoją relację, {" "}
                 </span> 
@@ -29,8 +37,8 @@ export function Login() {
             </div>
             <div className="box">
                 <Title align="center"> Zaloguj się</Title>
-                <GoogleButton onClick={handleGoogleClick} />
-            </div>
-        </div>
+                <GoogleButton onClick={redirect} />
+            </div>            
+        </div> : <Spinner/>
     )
 }

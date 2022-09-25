@@ -5,11 +5,13 @@ import {    signOut,
             signInWithRedirect
         } from "firebase/auth";
 import { auth } from './firebase';
+import { useNavigate } from 'react-router-dom';
 
 const userAuthContext = createContext();
 
 export function UserAuthContextProvider({ children }) {
     const [ user, setUser ] = useState("");
+    const navigate = useNavigate();  
 
     function googleSignIn() {
         const googleAuthProvider = new GoogleAuthProvider();
@@ -23,6 +25,7 @@ export function UserAuthContextProvider({ children }) {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            navigate("/home");
         });
         return () => unsubscribe();
     }, [])
