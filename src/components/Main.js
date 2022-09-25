@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 import { setDoc, doc, getDoc } from 'firebase/firestore';
 import { useUserAuth } from './../context/UserAuthContext';
@@ -25,27 +25,28 @@ export function Main() {
     const [ partnerUser, setPartnerUser ] = useState({});
     const [ mainUserScoreKeys, setMainUserScoreKeys ] = useState([]);
     const [ partnerUserScoreKeys, setPartnerUserScoreKeys ] = useState([]);
-    
-    useEffect(()=> {
-        const getUserFromServerList = async () => {
-            const docSnap = await getDoc(doc(db, 'users', 'allUsers'));
-            if (docSnap.exists()) {
-                docSnap.data()[user.email] ?
-                setMainUser(docSnap.data()[user.email]) :
-                addUserToServerList(user);
-                setMainUserScoreKeys(Object.keys(docSnap.data()[user.email].score));
-                const partner = docSnap.data()[user.email].partner;
-                if (partner) {
-                    setPartnerUser(docSnap.data()[partner]);
-                    setPartnerUserScoreKeys(Object.keys(docSnap.data()[partner].score));
-                }              
-            } else {      
-                console.log("There is no such documnet");  
-            }
+
+    const getUserFromServerList = useCallback(async () => {
+        const docSnap = await getDoc(doc(db, 'users', 'allUsers'));
+        if (docSnap.exists()) {
+            docSnap.data()[user.email] ?
+            setMainUser(docSnap.data()[user.email]) :
+            addUserToServerList(user);
+            setMainUserScoreKeys(Object.keys(docSnap.data()[user.email].score));
+            const partner = docSnap.data()[user.email].partner;
+            if (partner) {
+                setPartnerUser(docSnap.data()[partner]);
+                setPartnerUserScoreKeys(Object.keys(docSnap.data()[partner].score));
+            }              
+        } else {      
+            console.log("There is no such documnet");  
         }
         window.sessionStorage.removeItem("loading");
-        return ()=> getUserFromServerList();
-    }, [user]);
+    }, []);
+    
+    useEffect(()=> {
+        getUserFromServerList();
+    }, []);
 
     return ( mainUser ? 
          <>

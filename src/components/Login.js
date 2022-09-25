@@ -6,18 +6,20 @@ import { useState, useCallback } from 'react';
 import { Spinner } from './general/Spinner';
 import { useEffect } from 'react';
 
+
 export function Login() {
     const { googleSignIn } = useUserAuth();
     const [ isLoading, setIsLoading ] = useState(false);
 
-    useEffect(() => {
-        const onLoadSesionStorage = () => {
-            const data = sessionStorage.getItem("loading");
-            if (data) {
-                setIsLoading(true);
-            }
-        }  
-      return () => onLoadSesionStorage()
+    const onLoadSesionStorage = () => {
+        const data = sessionStorage.getItem("loading");
+        if (data) {
+            setIsLoading(true);
+        }
+    }
+
+    useEffect(() => {     
+      onLoadSesionStorage()
     }, []);
     
     const handleGoogleClick = useCallback(async() => {

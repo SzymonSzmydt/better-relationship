@@ -18,18 +18,19 @@ export function Search() {
     const { user } = useUserAuth(); 
     const navigate = useNavigate();
 
-    useEffect(()=> {
-        const getUserFromServerList = async () => {
-            const docSnap = await getDoc(doc(db, 'users', 'allUsers'));
+    const getUserFromServerList = useCallback(async () => {
+        const docSnap = await getDoc(doc(db, 'users', 'allUsers'));
 
-            if (docSnap.exists()) {
-                setUsersFromServer(docSnap.data());
-            } else {
-            // doc.data() will be undefined in this case
-            console.log("No such document!");
-            }
+        if (docSnap.exists()) {
+            setUsersFromServer(docSnap.data());
+        } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
         }
-        return ()=> getUserFromServerList();
+    }, []);
+
+    useEffect(()=> {
+        getUserFromServerList();
     }, []);
 
     const handleSearchButton = useCallback((e)=> {
