@@ -4,11 +4,11 @@ import { Title } from './general/Title';
 import { useUserAuth } from './../context/UserAuthContext';
 import { useState, useCallback } from 'react';
 import { Spinner } from './general/Spinner';
-
+import { useEffect } from 'react';
 
 export function Login() {
     const { googleSignIn } = useUserAuth();
-    const [ isLoading, setIsLoading ] = useState(true);
+    const [ isLoading, setIsLoading ] = useState(false);
 
 
     const handleGoogleClick = useCallback(async() => {
@@ -17,15 +17,28 @@ export function Login() {
         } catch (err) {
             console.log( err.message);
         }
-    }, );     
+    }, [googleSignIn]);     
     
     const redirect = useCallback(() => {
-            setIsLoading(false);
-            handleGoogleClick();
-    }, [handleGoogleClick]);       
+        window.sessionStorage.setItem('loading', 1);
+        setIsLoading(true);
+        handleGoogleClick();
+    }, [handleGoogleClick]);  
+    
+    useEffect(() => {
+        const onLoadSesionStorage = () => {
+            const data = sessionStorage.getItem("loading");
+            console.log("data ", data);
+            if (data) {
+                setIsLoading(true);
+            }
+        }  
+      return () => onLoadSesionStorage()
+    }, [])
+    
 
     return (
-        isLoading ?
+        !isLoading ?
         <div className="login">
                 <div className="intro-text">
                 <span className="intro-1">

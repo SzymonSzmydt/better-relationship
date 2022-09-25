@@ -28,6 +28,7 @@ export function Main() {
 
     useEffect(()=> {
         const getUserFromServerList = async () => {
+            window.sessionStorage.removeItem("name");
             const docSnap = await getDoc(doc(db, 'users', 'allUsers'));
 
             if (docSnap.exists()) {
