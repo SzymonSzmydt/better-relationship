@@ -1,5 +1,5 @@
 import { useLocation, Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { db } from './../context/firebase';
 import { doc, getDoc } from 'firebase/firestore';
 
@@ -34,16 +34,17 @@ export function Progress() {
     const [ question, setQuestions ] = useState([]);
     const { mainData, partnerData, mainKeys, partnerKeys } = {...state };
 
-    useEffect(()=> {
-        const getStandardQuestionsFromServerList = async () => {
-            const docSnap = await getDoc(doc(db, 'users', 'ankiet'));
-            if (docSnap.exists()) {
-                setQuestions(docSnap.data().standard);       
-            } else {      
-                console.log("There is no such documnet");  
-            }
+    const getStandardQuestionsFromServerList = useCallback(async () => {
+        const docSnap = await getDoc(doc(db, 'users', 'ankiet'));
+        if (docSnap.exists()) {
+            setQuestions(docSnap.data().standard);       
+        } else {      
+            console.log("There is no such documnet");  
         }
-        return ()=> getStandardQuestionsFromServerList();
+    }, []);
+
+    useEffect(()=> {
+        getStandardQuestionsFromServerList();
     }, []);
 
     return (
