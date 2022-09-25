@@ -14,6 +14,3 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
-
-// authDomain: "twoofus-d95e1.firebaseapp.com",
-// projectId: "twoofus-d95e1",
