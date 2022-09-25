@@ -10,7 +10,16 @@ export function Login() {
     const { googleSignIn } = useUserAuth();
     const [ isLoading, setIsLoading ] = useState(false);
 
-
+    useEffect(() => {
+        const onLoadSesionStorage = () => {
+            const data = localStorage.getItem("loading");
+            if (data) {
+                setIsLoading(true);
+            }
+        }  
+      return () => onLoadSesionStorage()
+    }, []);
+    
     const handleGoogleClick = useCallback(async() => {
         try {
             await googleSignIn();     
@@ -20,23 +29,11 @@ export function Login() {
     }, [googleSignIn]);     
     
     const redirect = useCallback(() => {
-        window.sessionStorage.setItem('loading', 1);
+        localStorage.setItem('loading', "two Of us");
         setIsLoading(true);
         handleGoogleClick();
     }, [handleGoogleClick]);  
     
-    useEffect(() => {
-        const onLoadSesionStorage = () => {
-            const data = sessionStorage.getItem("loading");
-            console.log("data ", data);
-            if (data) {
-                setIsLoading(true);
-            }
-        }  
-      return () => onLoadSesionStorage()
-    }, [])
-    
-
     return (
         !isLoading ?
         <div className="login">

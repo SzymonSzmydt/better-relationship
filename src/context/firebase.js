@@ -4,7 +4,7 @@ import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBC4vp-zJYcc94Poqifii4pHCtyzJKHOBw",
-  authDomain: "twoofus-d95e1.firebaseapp.com",
+  authDomain: "northshape.eu",
   projectId: "twoofus-d95e1",
   storageBucket: "twoofus-d95e1.appspot.com",
   messagingSenderId: "850339454573",
@@ -14,3 +14,5 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+
+// authDomain: "twoofus-d95e1.firebaseapp.com",
