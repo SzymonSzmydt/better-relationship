@@ -13,8 +13,8 @@ const addUserToServerList = async(user) => {
         [user.email] : {
             name: user.displayName,
             image: user.photoURL,
-            partner: '',
-            score: []
+            partner: false,
+            score: false
         }
      }, {merge: true});
 }
@@ -25,12 +25,10 @@ export function Main() {
     const [ partnerUser, setPartnerUser ] = useState({});
     const [ mainUserScoreKeys, setMainUserScoreKeys ] = useState([]);
     const [ partnerUserScoreKeys, setPartnerUserScoreKeys ] = useState([]);
-
+    
     useEffect(()=> {
         const getUserFromServerList = async () => {
-            window.localStorage.removeItem("loading");
             const docSnap = await getDoc(doc(db, 'users', 'allUsers'));
-
             if (docSnap.exists()) {
                 docSnap.data()[user.email] ?
                 setMainUser(docSnap.data()[user.email]) :
@@ -45,6 +43,7 @@ export function Main() {
                 console.log("There is no such documnet");  
             }
         }
+        window.sessionStorage.removeItem("loading");
         return ()=> getUserFromServerList();
     }, [user]);
 

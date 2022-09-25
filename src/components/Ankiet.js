@@ -12,31 +12,27 @@ import { BarChart } from './charts/BarChart';
 import { TopWindow } from './general/TopWindow';
 import { Spinner } from './general/Spinner';
 
+const data = [
+    "Czy czujesz się wysłuchana (-ny)",
+    "Czy ilość rozmów była wystarczająca w ostatnim czasie ?",
+    "Czy tematy o których rozmawiacie są ciekawe ?",
+    "Czy ilość randek była odpowiednia w ostatnim czasie ?",
+    "Jak oceniasz sex w swoim związku ?",
+    "Czy flirt wplatany jest wystarczająco często ?"
+];
+
 export function Ankiet() {
     const { user } = useUserAuth(); 
-    const [ question, setQuestions ] = useState([]);
+    const [ question ] = useState(data);
     const [ questionNumber, setQuestionNumber ] = useState(1);
     const [ score, setScore ] = useState([]);
-
-    useEffect(()=> {
-        const getQuestionsFromServerList = async () => {
-            const docSnap = await getDoc(doc(db, 'users', 'ankiet'));
-
-            if (docSnap.exists()) {
-                setQuestions(docSnap.data().standard);       
-            } else {      
-                console.log("There is no such documnet");  
-            }
-        }
-        return ()=> getQuestionsFromServerList();
-    }, []);
 
     return (
         <>
             <TopWindow>
                 <TopHeader />
                 { question ? questionNumber === 1 ?
-                <div style={{padding: "0 1rem"}}>
+                <div className="container" style={{padding: "0 1rem"}}>
                     <Title color={"var(--color-facebook)"}> Odpowiedz na pytania</Title>
                     <Text>
                         <i>

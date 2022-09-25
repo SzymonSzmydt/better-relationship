@@ -8,7 +8,7 @@ export function TopUser({ mainUser, partnerUser }) {
     return (
         <>
             <div className="top-user">
-                <UserIcon user={mainUser.name} image={user ? user.photoURL : ''}/>
+                <UserIcon user={user.displayName} image={user ? user.photoURL : ''}/>
                 { !mainUser.partner ? <Partner/> :
                  <UserIcon user={partnerUser ? partnerUser.name : ''} image={partnerUser ? partnerUser.image : ""}/>
                   }

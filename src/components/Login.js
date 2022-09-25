@@ -12,7 +12,7 @@ export function Login() {
 
     useEffect(() => {
         const onLoadSesionStorage = () => {
-            const data = localStorage.getItem("loading");
+            const data = sessionStorage.getItem("loading");
             if (data) {
                 setIsLoading(true);
             }
@@ -29,7 +29,7 @@ export function Login() {
     }, [googleSignIn]);     
     
     const redirect = useCallback(() => {
-        localStorage.setItem('loading', "two Of us");
+        window.sessionStorage.setItem('loading', "two Of us");
         setIsLoading(true);
         handleGoogleClick();
     }, [handleGoogleClick]);  

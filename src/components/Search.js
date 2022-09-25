@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { db } from './../context/firebase';
@@ -56,12 +56,14 @@ export function Search() {
     return (
         usersFromServer ?
         <BottomWindow style={{marginTop: "5rem"}}>
-            <TopHeader style={{backgroundColor: "var(--gradient-dark)"}}/>
+            <div style={{height: "2rem", marginBottom: "2rem"}}>
+                <TopHeader/>
+            </div>   
             <Title>Znajdź partnera</Title>
             <Text>
                 Razem łatwiej pokonacie trudności.
             </Text>
-            <div>
+            <div style={{textAlign: "center"}}>
                 <form className="form">
                     <label>
                         Wyszukaj email partnera (min. 4 znaki): 
@@ -81,7 +83,10 @@ export function Search() {
                                 {element } 
                             </li>) : null }
                     </ul>
-                </div>  
+                </div>
+                <span style={{fontSize: "1rem", padding: "1rem"}}>
+                    <Link to="/home" className="Link" style={{fontSize: "1rem"}}> Wróć </Link> 
+                </span>    
             </div>        
         </BottomWindow>
         : <Spinner/>

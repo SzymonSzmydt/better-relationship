@@ -20,10 +20,10 @@ export function Top({ mainUser, partnerUser, mainUserScoreKeys, partnerUserScore
             <TopUser mainUser={mainUser} partnerUser={partnerUser}/>
             <div className="top__statistic container">
                 { !mainUser || mainUser !== {} ?
-                <Statistic progress={mainStatisticsPoints(mainUser.score, mainUserScoreKeys)} text={"Mój postęp"} symbols={true}/> :
+                <Statistic progress={!mainUser ? "- --" : mainStatisticsPoints(mainUser.score, mainUserScoreKeys)} text={"Mój postęp"} symbols={true}/> :
                 <Spinner/> }
                 { !partnerUser || partnerUser !== {} ?
-                <Statistic progress={mainStatisticsPoints(partnerUser.score, partnerUserScoreKeys)} text={"Postęp partnera"} symbols={true} /> :
+                <Statistic progress={!partnerUser ? "- --" : mainStatisticsPoints(partnerUser.score, partnerUserScoreKeys)} text={"Postęp partnera"} symbols={true} /> :
                 <Spinner/> }
             </div>
         </TopWindow>
