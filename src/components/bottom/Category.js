@@ -4,22 +4,21 @@ import { useNavigate } from 'react-router-dom';
 import { Spinner } from './../general/Spinner';
 import { useCallback, useState } from 'react';
 
-const getDayNumber = (date) => Number( date.slice(0, 2) );
-const getMonthNumber = (date) => Number( date.slice(3, 5) );
-
 export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUserScoreKeys }) {
     const navigate = useNavigate();
     const [ daysLeft, setDaysLeft ] = useState(0); 
 
     const checkDateFromNow = useCallback((date) => {
-        const dateNow = new Date().toLocaleDateString();
-        const nowDay = getDayNumber(dateNow);
-        const nowMonth = getMonthNumber(dateNow);
-        const oldDay = getDayNumber(date[date.length - 1]);
-        const oldMonth = getMonthNumber(date[date.length - 1]);
+        const rootDate = new Date();
+
+        const nowDay = rootDate.getDate();
+        const nowMonth = (rootDate.getMonth() + 1);
+        const dateToArray = date[date.length - 1].split('.');
+        const oldDay = dateToArray[0];
+        const oldMonth = dateToArray[1];
     
         if (nowMonth === oldMonth) {
-            let result = nowDay - oldDay + 25;
+            let result = Number(nowDay) - Number(oldDay) + 25;
             return nowDay - oldDay > 25 ? navigate("/ankiet") : setDaysLeft(result);
         }
         if (nowMonth === oldMonth + 1) {

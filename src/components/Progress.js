@@ -67,7 +67,7 @@ export function Progress() {
                 { mainKeys.length > 0 ?
                 <Text> Poniżej znajduje się porównanie waszych ostatnich odpowiedzi. </Text> : null }
                 { mainKeys.length > 0 ?
-                <StandardTable text={"Pytanie"} second={mainData.name} third={partnerData.name}>
+                <StandardTable text={"nr testu"} second={mainData.name} third={partnerData.name}>
                     {     
                     makeAgoodObjectForMap(mainData.score, partnerData.score).map((e, i) => (
                     <TableTr key={e.user + 1} lp={i} userScore={e.user} partnerScore={e.partner}/>

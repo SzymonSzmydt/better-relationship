@@ -6,7 +6,9 @@ import { setDoc, doc } from 'firebase/firestore';
 import { BottomWindow } from './general/BottomWindow';
 
 const addScoreToServer = async (user, score) => {
-    const date = new Date().toLocaleDateString();
+    const rootDate = new Date();
+    const date = `${rootDate.getDate()}.${(rootDate.getMonth() + 1)}.${rootDate.getFullYear()}`;
+
     await setDoc(doc(db, 'users', 'allUsers'), {
         [user.email] : {
             "score": {

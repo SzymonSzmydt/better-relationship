@@ -8,17 +8,17 @@ export function TitleTable({ title, first, second, firstAnswer, secondAnswer }) 
         <table className="table">
             <thead>
                 <tr>
-                    <th colSpan="3" className="table-td td-bg"> { title } </th>
+                    <th colSpan="2" className="table-td td-bg"> { title } </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td className="table-td td-bg-a"> { firstName } </td>
-                    <td className="table-td"> { firstAnswer } </td>
+                    <td style={{width: "70%"}} className="table-td td-bg-a"> { firstName.split(' ', 1) } </td>
+                    <th className="table-td" style={{color: firstAnswer <= 5 ? "var(--color-error)" : ""}}> { firstAnswer } </th>
                 </tr>
                 <tr>
-                    <td className="table-td td-bg-a"> { secondName } </td>
-                    <td className="table-td"> { secondAnswer } </td>
+                    <td className="table-td td-bg-a"> { secondName.split(' ', 1) } </td>
+                    <th className="table-td" style={{color: secondAnswer <= 5 ? "var(--color-error)" : ""}}> { secondAnswer } </th>
                 </tr>
             </tbody>
         </table>

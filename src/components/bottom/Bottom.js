@@ -13,7 +13,10 @@ export function Bottom({ mainUser, partnerUser, mainUserScoreKeys, partnerUserSc
                 <div>
                     <Title>ODKRYJ SIEBIE</Title>
                     <Text>
-                        <em>„Nasza wartość jest sumą naszych wartości”. Joe Batten</em>
+                        <p>
+                            <em>„Nasza wartość jest sumą naszych wartości”</em>
+                        </p>
+                        <p style={{textAlign: "right"}}>Joe Batten</p>
                     </Text>
                 </div>        
             </Window>           

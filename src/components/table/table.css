@@ -19,9 +19,9 @@
 }
 
 .td-bg {
-    background-color: #C9DC8D;
+    background-color: var(--color-accent);
 }
 
 .td-bg-a {
-    background-color: #D9EDDF;
+    background-color: var(--color-chart);
 }

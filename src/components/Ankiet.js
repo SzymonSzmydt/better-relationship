@@ -1,8 +1,5 @@
-import { useEffect, useState } from 'react';
-import { db } from './../context/firebase';
-import { doc, getDoc } from 'firebase/firestore';
+import { useState } from 'react';
 import { useUserAuth } from './../context/UserAuthContext';
-
 import { Title } from './general/Title';
 import { Text } from './general/Text';
 import { Question } from './Question';
@@ -13,7 +10,7 @@ import { TopWindow } from './general/TopWindow';
 import { Spinner } from './general/Spinner';
 
 const data = [
-    "Czy czujesz się wysłuchana (-ny)",
+    "Czy czujesz się wysłuchana (-y)",
     "Czy ilość rozmów była wystarczająca w ostatnim czasie ?",
     "Czy tematy o których rozmawiacie są ciekawe ?",
     "Czy ilość randek była odpowiednia w ostatnim czasie ?",
@@ -35,9 +32,12 @@ export function Ankiet() {
                 <div className="container" style={{padding: "0 1rem"}}>
                     <Title color={"var(--color-facebook)"}> Odpowiedz na pytania</Title>
                     <Text>
-                        <i>
-                            „Jeśli mówisz prawdę, nie musisz niczego pamiętać.”. &nbsp; Mark Twain
-                        </i>
+                        <p>
+                            <i>
+                            „Jeśli mówisz prawdę, nie musisz niczego pamiętać” 
+                            </i>
+                        </p>
+                        <p style={{textAlign: "right"}}>Mark Twain</p>
                     </Text>
                 </div> :
                 <div className="ankiet__chart-box">
