@@ -17,12 +17,12 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
         const oldDay = dateToArray[0];
         const oldMonth = dateToArray[1];
     
-        if (nowMonth === oldMonth) {
-            let result = Number(nowDay) - Number(oldDay) + 25;
-            return nowDay - oldDay > 25 ? navigate("/ankiet") : setDaysLeft(result);
+        if (Number(nowMonth) === Number(oldMonth)) {
+            let result = 25 - ( Number(nowDay) - Number(oldDay) );
+            return result > 25 ? navigate("/ankiet") : setDaysLeft(result);
         }
         if (nowMonth === oldMonth + 1) {
-            let result = (31 - oldDay + nowDay);
+            let result = (30 - Number(oldDay)) + Number(nowDay);
             return result > 25 ? navigate("/ankiet") : setDaysLeft(result);
         }
         return navigate("/ankiet");

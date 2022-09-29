@@ -5,7 +5,6 @@ export function UserIcon({ user, image }) {
         borderRadius:"var(--radius)", 
         width: "5rem",
         alignSelf: "baseline",
-        opacity: 0.8
     };
     return (
         <figure>

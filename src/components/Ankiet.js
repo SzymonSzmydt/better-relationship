@@ -32,13 +32,11 @@ export function Ankiet() {
                 <div className="container" style={{padding: "0 1rem"}}>
                     <Title color={"var(--color-facebook)"}> Odpowiedz na pytania</Title>
                     <Text>
-                        <p>
-                            <i>
+                        <em>
                             „Jeśli mówisz prawdę, nie musisz niczego pamiętać” 
-                            </i>
-                        </p>
-                        <p style={{textAlign: "right"}}>Mark Twain</p>
+                        </em>
                     </Text>
+                    <Text align={"right"}>Mark Twain</Text>         
                 </div> :
                 <div className="ankiet__chart-box">
                     <BarChart score={score}/>
