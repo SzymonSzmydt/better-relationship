@@ -1,14 +1,19 @@
 # Better-rellationship
 
-Aplikacja monitoruje stan związku oraz pomaga wzmocnić tą
-sferę, w której jest najwęcej do zrobienia.
+The application monitors the state of the relationship and helps to strengthen the area in which it is best to do.
 
-Podgląd dostępny pod adresem: [northshape.eu](https://northshape.eu)
+Preview available at (requires login): [northshape.eu](https://northshape.eu)
 
-### Wykorzystane technologie
+***
+
+## Technologies used
 
 1. **React**
 2. **VictoryChart**
-3. **CSS**
+3. **Firebase**
+4. **google/auth**
+5. **CSS**
 
-### Sukcesywnie rozwijana
+___
+
+### Successively developed
