@@ -21,9 +21,10 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
             let result = 25 - ( Number(nowDay) - Number(oldDay) );
             return result > 25 ? navigate("/ankiet") : setDaysLeft(result);
         }
-        if (nowMonth === oldMonth + 1) {
-            let result = (30 - Number(oldDay)) + Number(nowDay);
-            return result > 25 ? navigate("/ankiet") : setDaysLeft(result);
+        if (Number(nowMonth) === Number(oldMonth) + 1) {
+            let daysToWait = (30 - Number(oldDay)) + Number(nowDay);
+            let daysLeft = 25 - daysToWait;
+            return daysToWait > 25 ? navigate("/ankiet") : setDaysLeft(daysLeft);
         }
         return navigate("/ankiet");
     }, [navigate]);

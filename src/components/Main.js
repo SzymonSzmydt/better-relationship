@@ -1,12 +1,34 @@
-import { useEffect, useState, useCallback } from 'react';
-
+import { useEffect, useReducer, useCallback } from 'react';
 import { setDoc, doc, getDoc } from 'firebase/firestore';
 import { useUserAuth } from './../context/UserAuthContext';
 import { db } from './../context/firebase';
-
 import { Top } from './top/Top';
 import { Spinner } from './general/Spinner';
 import { Bottom } from './bottom/Bottom';
+
+const initialState = {
+    mainUser: {},
+    partnerUser: {},
+    mainUserScoreKeys: [],
+    partnerUserScoreKeys: []
+}
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'users': 
+            return {
+                ...state,
+                [action.field]: action.payload
+            }
+        case 'usersScore':
+            return {
+                ...state,
+                [action.field]: Object.keys(action.payload)
+            } 
+        default:
+            throw new Error(`Unknown action type: ${action.type}`);
+    }
+}
 
 const addUserToServerList = async(user) => {
     await setDoc(doc(db, 'users', 'allUsers'), {
@@ -21,22 +43,36 @@ const addUserToServerList = async(user) => {
 
 export function Main() {
     const { user } = useUserAuth(); 
-    const [ mainUser, setMainUser ] = useState({});
-    const [ partnerUser, setPartnerUser ] = useState({});
-    const [ mainUserScoreKeys, setMainUserScoreKeys ] = useState([]);
-    const [ partnerUserScoreKeys, setPartnerUserScoreKeys ] = useState([]);
+    const [ state, dispatch ] = useReducer(reducer, initialState);
+    const { mainUser, partnerUser, mainUserScoreKeys, partnerUserScoreKeys } = state;
 
     const getUserFromServerList = useCallback(async () => {
         const docSnap = await getDoc(doc(db, 'users', 'allUsers'));
         if (docSnap.exists()) {
             docSnap.data()[user.email] ?
-            setMainUser(docSnap.data()[user.email]) :
+            dispatch({ 
+                type: 'users', 
+                field: 'mainUser',
+                payload: docSnap.data()[user.email]
+            }) :
             addUserToServerList(user);
-            setMainUserScoreKeys(Object.keys(docSnap.data()[user.email].score));
+            dispatch({ 
+                type: 'usersScore', 
+                field: 'mainUserScoreKeys',
+                payload: docSnap.data()[user.email].score
+            });
             const partner = docSnap.data()[user.email].partner;
             if (partner) {
-                setPartnerUser(docSnap.data()[partner]);
-                setPartnerUserScoreKeys(Object.keys(docSnap.data()[partner].score));
+                dispatch({ 
+                    type: 'users', 
+                    field: 'partnerUser',
+                    payload: docSnap.data()[partner]
+                });
+                dispatch({ 
+                    type: 'usersScore', 
+                    field: 'partnerUserScoreKeys',
+                    payload: docSnap.data()[partner].score
+                });
             }              
         } else {      
             console.log("There is no such documnet");  

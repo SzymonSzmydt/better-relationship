@@ -13,11 +13,11 @@ export function TitleTable({ title, first, second, firstAnswer, secondAnswer }) 
             </thead>
             <tbody>
                 <tr>
-                    <td style={{width: "70%"}} className="table-td td-bg-a"> { firstName.split(' ', 1) } </td>
+                    <td style={{width: "70%"}} className="table-td td-bg-a"> { !firstName ? '' : firstName.split(' ', 1) } </td>
                     <th className="table-td" style={{color: firstAnswer <= 5 ? "var(--color-error)" : ""}}> { firstAnswer } </th>
                 </tr>
                 <tr>
-                    <td className="table-td td-bg-a"> { secondName.split(' ', 1) } </td>
+                    <td className="table-td td-bg-a"> { !secondName ? '' : secondName.split(' ', 1) } </td>
                     <th className="table-td" style={{color: secondAnswer <= 5 ? "var(--color-error)" : ""}}> { secondAnswer } </th>
                 </tr>
             </tbody>

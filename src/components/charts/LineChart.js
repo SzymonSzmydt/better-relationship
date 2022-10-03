@@ -7,7 +7,7 @@ export function LineChart({ userData, partnerData }) {
             <VictoryLine 
                 domain={{y: [0, 10]}}
                 style={{
-                    data: { stroke: userData ?"var(--color-btn-category)" : "transparent" },
+                    data: { stroke: !userData ? "transparent" : "var(--color-btn-category)" },
                   }}
                   animate={{
                     duration: 2000,
@@ -18,7 +18,7 @@ export function LineChart({ userData, partnerData }) {
             <VictoryLine 
                 data={partnerData}
                 style={{
-                    data: { stroke: partnerData ? "var(--gradient-dark)" : "transparent" },
+                    data: { stroke: !partnerData ? "transparent" : "var(--gradient-dark)" },
                   }} 
             />
         </VictoryChart>
