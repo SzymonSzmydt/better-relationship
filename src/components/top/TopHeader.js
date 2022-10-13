@@ -17,11 +17,9 @@ export function TopHeader({style}) {
 
     return (
         <header className="header">
-            <span className="symbol symbol__power_settings_new" 
+            <div className="symbol symbol__power_settings_new off"
                     onClick={()=> handleLogOut()}/>
-            <span>
-                <Link to="/home" className="logo">two Of us</Link>
-            </span>
+            <Link to="/home" className="logo">two Of us</Link>
         </header>
     )
 }

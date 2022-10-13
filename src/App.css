@@ -41,10 +41,24 @@
   background-image: url('./assets/power_settings_new.png');
 }
 
+.symbol__person_add {
+  background-image: url('./assets/person_add.png');
+}
+
 .icon {
-  font-size: 3rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  align-self: baseline;
+  border: 1px solid var(--color-green);
+  border-radius: var(--radius);
+  color: var(--color-white);
   padding: 1rem;
-  color: var(--color-bg);
+}
+
+.off {
+  width: 2rem;
+  height: 2rem;
+  margin: 0.5rem 1rem;
 }
 
 @keyframes from-nothing {
