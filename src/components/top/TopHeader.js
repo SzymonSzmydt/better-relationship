@@ -17,10 +17,8 @@ export function TopHeader({style}) {
 
     return (
         <header className="header">
-            <span className="material-symbols-outlined settings-icon" 
-                    onClick={()=> handleLogOut()}>
-                    power_settings_new
-            </span>
+            <span className="symbol symbol__power_settings_new" 
+                    onClick={()=> handleLogOut()}/>
             <span>
                 <Link to="/home" className="logo">two Of us</Link>
             </span>

@@ -6,10 +6,39 @@
   background-color: var(--color-bg);
 }
 
-.font {
-  font-size: 2.5rem;
-  padding: 1rem 2.25rem 0;
-  color: var(--color-bg);
+.symbol {
+  width: 3rem;
+  height: 3rem;
+  margin: 1rem 2.25rem 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: 
+      invert(100%) 
+      sepia(0%) 
+      saturate(0%) 
+      hue-rotate(102deg) 
+      brightness(107%) 
+      contrast(100%);
+}
+
+.symbol__quiz {
+  background-image: url('./assets/quiz.png');
+}
+
+.symbol__shape-line {
+  background-image: url('./assets/shape_line.png');
+}
+
+.symbol__trending_up {
+  background-image: url('./assets/trending_up.png');
+}
+
+.symbol__multiline_chart {
+  background-image: url('./assets/multiline_chart.png');
+}
+
+.symbol__power_settings_new {
+  background-image: url('./assets/power_settings_new.png');
 }
 
 .icon {

@@ -38,7 +38,7 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
                         align={"center"}
                         onClick={()=> mainUserScoreKeys.length === 0 ? navigate("/ankiet") : checkDateFromNow(mainUserScoreKeys)}
                         >
-                        <span className="material-symbols-outlined font">quiz</span>
+                        <div className="symbol symbol__quiz"/>
                     </CategoryBtn>
                     <CategoryBtn 
                         bgcolor={"var(--color-btn-category)"} 
@@ -53,7 +53,7 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
                             }
                         })}
                         >
-                        <span className="material-symbols-outlined font">shape_line</span>
+                        <div className="symbol symbol__shape-line"/>
                     </CategoryBtn>
                     <CategoryBtn 
                         bgcolor={"var(--color-btn-category)"} 
@@ -61,7 +61,7 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
                         align={"center"}
                         opacity={"0.4"}
                         >
-                        <span className="material-symbols-outlined font">trending_up</span>
+                        <div className="symbol symbol__trending_up"/>
                     </CategoryBtn>
                     <CategoryBtn 
                         bgcolor={"var(--color-btn-category)"} 
@@ -69,7 +69,7 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
                         align={"center"}
                         opacity={"0.4"}
                         >
-                        <span className="material-symbols-outlined font">multiline_chart</span>
+                    <div className="symbol symbol__multiline_chart"/>
                     </CategoryBtn>
                 </Window> :
             <Spinner/>
