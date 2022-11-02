@@ -1,44 +1,16 @@
 .top {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    height: 35%;
+    align-items: center;
     color: var(--color-bg);
-    background: linear-gradient(0deg, var(--gradient-light) 0%, var(--gradient-dark) 40%);
-    border-radius: 0;
-    position: relative;
-}
-
-@media screen and (max-width: 520px) {
-    .top {
-     border-radius: 0 0 2rem 2rem;
-    }
+    padding: 0 1rem;
+    height: 40%;
+    background-color: var(--top-bg);
 }
 
 .container {
     max-width: 766px;
     margin: 0 auto;
-}
-
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    width: 100%;
-    padding: 0 0 0.25rem;
-    background-color: rgba(158, 57, 212, 0.9);
-}
-
-.logo {
-    text-decoration: none;
-    color: var(--color-yellow);
-    font-family: var(--Great);
-    font-size: 2rem;
-    padding: 0 2rem;
 }
 
 .top-user {
@@ -60,19 +32,21 @@
 }
 
 .top__statistic {
-    width: 90%; 
     display: flex;
     justify-content: space-between;
-    position: absolute;
-    bottom: 0.5rem;
-    left: 0;
-    right: 0;
+    width: 100%;
+    margin-top: 1rem;
+    background-color: var(--color-stat);
+    border-radius: var(--radius);
+    box-shadow: 0 0 5px 1px var(--color-btn-category);
 }
 
 .top__statistic-section {
     text-align: center;
-    color: var(--color-white);
-    padding: 0 0.5rem;
+    color: var(--stat-text);
+    padding: 0.5rem 1rem;
+    background-color: var(--color-stat);
+    border-radius: var(--radius);
 }
 
 .p-normal {
@@ -80,14 +54,14 @@
     font-family: var(--Roboto);
     font-size: 1.25rem;
     font-weight: 400;
-    color: var(--color-);
+    color: var(--stat-text);
 }
 
 .p-text {
     text-align: center;
     font-family: var(--sherif);
-    color: var(--color-bg);
+    color: var(--stat-text);
     font-size: 0.8rem;
-    font-weight: 300;
+    font-weight: 500;
     text-transform: lowercase;
 }

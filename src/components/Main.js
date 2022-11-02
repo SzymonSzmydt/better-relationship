@@ -5,6 +5,7 @@ import { db } from './../context/firebase';
 import { Top } from './top/Top';
 import { Spinner } from './general/Spinner';
 import { Bottom } from './bottom/Bottom';
+import { TopHeader } from './top/TopHeader';
 
 const initialState = {
     mainUser: {},
@@ -86,6 +87,7 @@ export function Main() {
 
     return ( mainUser ? 
          <>
+            <TopHeader/>
             <Top 
                 mainUser={mainUser} 
                 partnerUser={partnerUser} 

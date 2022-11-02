@@ -1,8 +1,8 @@
 
-export function TableTr({ lp, userScore, partnerScore}) {
+export function Tbody({ lp, userScore, partnerScore}) {
 
     return (
-        <tr>
+        <tr className="tbody-tr">
             { <td className="table-td">
                  { lp + 1 } 
             </td> }

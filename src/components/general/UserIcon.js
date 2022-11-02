@@ -5,7 +5,7 @@ export function UserIcon({ user, image }) {
         borderRadius:"var(--radius)", 
         width: "5rem",
         alignSelf: "baseline",
-        transition: "all 0.4s"
+        boxShadow: '0 0 5px 5px var(--logo__user-img-shadow)'
     };
     return (
         <figure>
@@ -13,7 +13,7 @@ export function UserIcon({ user, image }) {
             <img src={image} alt="User" style={style} /> :
             <Spinner/> }
             <figcaption>
-                <p style={{textAlign: "center", color: "var(--color-bg)", marginTop: "0"}}>
+                <p style={{textAlign: "center", color: "var(--logo__user-name)", marginTop: "0"}}>
                     { user ? user.split(' ', 1) : " " }
                 </p>
             </figcaption>

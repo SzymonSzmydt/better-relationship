@@ -6,7 +6,8 @@
     margin: 0.5rem 0;
     padding: 0.5rem;
     border-radius: var(--radius);
-    background-color: var(--color-window);
+    background-color: var(--color-white);
+    box-shadow: 0 0 5px 1px var(--color-bg-shadow);
 }
 
 .text {

@@ -1,21 +1,31 @@
 :root {
-  --color-bg: #FFF6FF;
-  --color-window: #EAF2FA;
-  --color-dark: #324B50;
-  --color-white: #ffffff;
-  --color-accent: #BED8F0;
+  --color-bg: #F8FFF8;
+  --color-bg-shadow: #D7DBAB;
+  --top-bg: #67C62B;
+  
+  --color-dark: #334E21;
+  --color-white: #fafffa;
+  --color-accent: #B4F08E;
 
   --color-green: #72d487;
-  --color-yellow: yellow;
   --color-error: #ff002b;
-  --color-btn-category: #1773b1;
-  --color-facebook: #50b6df;
-  --color-chart: #FFE8FF;
-  --color-border: #9E39D4;
 
-  --gradient-dark: #9E39D4;
-  --gradient-light: #F424AA;
-  --radius: 8px;
+  --logo__user-name: #004F6D;
+  --logo__user-img-shadow: #F1EEDF;
+  --color-logo: #3abdbd;
+
+  --color-btn-category: #00A42B;
+  --color-facebook: #39918C;
+  --color-chart: #E3F7D3;
+  --color-border: #67C62B;
+  
+  --color-stat: #67C62B;
+  --stat-text: #2A272A;
+  --stat-score: #004F6D;
+
+  --color-header-fix: #f8fffb;
+
+  --radius: 6px;
   --Roboto: 'Roboto Condensed', sans-serif;
   --Great: 'Great Vibes', cursive;
 }
@@ -28,4 +38,14 @@ body {
   font-weight: 400;
   color: var(--color-dark);
   background-color: var(--color-bg);
+}
+
+.container-lg {
+  width: 100%;
+}
+
+@media screen and (min-width: 1000px) {
+  .container-lg {
+    width: 1000px;
+  }
 }

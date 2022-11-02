@@ -6,7 +6,7 @@ import { Question } from './Question';
 import { TopHeader } from './top/TopHeader';
 import { Statistic } from './top/Statistic';
 import { BarChart } from './charts/BarChart';
-import { TopWindow } from './general/TopWindow';
+import { TopWindow } from './top/TopWindow';
 import { Spinner } from './general/Spinner';
 
 const data = [

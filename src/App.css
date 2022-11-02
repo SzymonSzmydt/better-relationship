@@ -7,9 +7,9 @@
 }
 
 .symbol {
-  width: 3rem;
-  height: 3rem;
-  margin: 1rem 2.25rem 0;
+  width: 2rem;
+  height: 2rem;
+  margin: 0.25rem;
   background-repeat: no-repeat;
   background-size: cover;
   filter: 
@@ -56,9 +56,15 @@
 }
 
 .off {
+  cursor: pointer;
   width: 2rem;
   height: 2rem;
   margin: 0.5rem 1rem;
+  filter: invert(66%) sepia(35%) saturate(4776%) hue-rotate(136deg) brightness(95%) contrast(106%);
+}
+
+.off:hover {
+  filter: invert(11%) sepia(87%) saturate(6877%) hue-rotate(346deg) brightness(101%) contrast(104%);
 }
 
 @keyframes from-nothing {

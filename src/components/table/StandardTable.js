@@ -6,8 +6,8 @@ export function StandardTable({ text, second, third, children}) {
             <thead>
                 <tr>
                     <th className="table-td td-bg"> { text } </th>
-                    <td className="table-td td-bg" style={{color: "var(--color-btn-category)"}}> { second } </td>
-                    <td className="table-td td-bg" style={{color: "var(--gradient-dark)"}}> { !third ? "Partner" : third }</td>
+                    <th className="table-td td-bg"> { second } </th>
+                    <th className="table-td td-bg"> { !third ? "Partner" : third }</th>
                 </tr>
             </thead>
             <tbody>

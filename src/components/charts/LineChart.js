@@ -1,25 +1,58 @@
 import { VictoryChart, VictoryLine } from 'victory';
 
-export function LineChart({ userData, partnerData }) {
+const chartTheme = {
+  axis: {
+    style: {
+      axis: {
+        fill: "transparent",
+        stroke: '#F8FFF8',
+        strokeWidth: 2,
+      },
+      grid: {
+        fill: "transparent",
+        stroke: "#00A42B",
+        pointerEvents: "none"
+      },
+      ticks: {
+        size: 10,
+        stroke: "white"
+      },
+      tickLabels: {
+        fill: '#F8FFF8',
+        fontSize: 12,
+        padding: 10,
+      },
+    },
+  },
+};
 
+export function LineChart({ userData, partnerData }) {
     return (
-        <VictoryChart>
+        <VictoryChart theme={chartTheme}>
             <VictoryLine 
-                domain={{y: [0, 10]}}
+                domain={{y: [0, 11]}}
                 style={{
-                    data: { stroke: !userData ? "transparent" : "var(--color-btn-category)" },
+                        data: {stroke: !userData ? "transparent" : "yellow", strokeWidth: 2}
                   }}
                   animate={{
                     duration: 2000,
                     onLoad: { duration: 1000 }
                   }}
                 data={userData}
+                x='x'
+                y='y'
             />
             <VictoryLine 
-                data={partnerData}
                 style={{
-                    data: { stroke: !partnerData ? "transparent" : "var(--gradient-dark)" },
+                    data: { stroke: !partnerData ? "transparent" : "aqua", strokeWidth: 2 }
                   }} 
+                animate={{
+                    duration: 2000,
+                    onLoad: { duration: 1000 }
+                  }}
+                  data={partnerData}
+                  x='x'
+                  y='y'
             />
         </VictoryChart>
     )

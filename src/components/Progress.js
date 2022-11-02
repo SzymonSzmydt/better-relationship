@@ -2,21 +2,19 @@ import { useLocation, Link } from 'react-router-dom';
 import { useEffect, useState, useCallback } from 'react';
 import { db } from './../context/firebase';
 import { doc, getDoc } from 'firebase/firestore';
-
 import { BottomWindow } from './general/BottomWindow';
 import { TopHeader } from './top/TopHeader';
-import { Title } from './general/Title';
 import { LineChart } from './charts/LineChart';
-import { Window } from './general/Window';
 import { Text } from './general/Text';
-import { TableTr } from './table/TableTr';
+import { Tbody } from './table/Tbody';
 import { StandardTable } from './table/StandardTable';
 import { TitleTable } from './table/TitleTable';
+import { TopWindow } from './top/TopWindow';
 
-const makeAgoodObjectForChart = (keys, data) => {
+const makeAgoodObjectForChart = (data) => {
     if (data) {
-        const getValuesFromData = Object.values(data).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 10);
-        return getValuesFromData.map( (values, index) => ({x: keys[index], y: values}));
+        const getValuesFromData = Object.values(data).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => (e / 6));
+        return getValuesFromData.map( (values, index) => ({x: index + 1, y: Number(values.toFixed(1)) }));
     }
     return null
 }
@@ -45,32 +43,28 @@ export function Progress() {
 
     useEffect(()=> {
         getStandardQuestionsFromServerList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    console.log('partnerData.score',partnerData.score);
+
     return (
-        <>  
-            <div style={{height: "2rem", marginBottom: "2rem"}}>
-                <TopHeader/>
-            </div>        
+        <>     
+            <TopHeader/>
+            <TopWindow> 
+                <LineChart 
+                    userData={makeAgoodObjectForChart( mainData.score )}
+                    partnerData={makeAgoodObjectForChart( partnerData.score )}
+                    />
+            </TopWindow>
             <BottomWindow>
-                <Title> Tak wyglądają Twoje postępy </Title>
-                <Text>
-                    Wraz z upływem czasu pojawi się tutaj więcej danych. Zobaczysz jak 
-                    zmienia się wasze wspólne życie.
-                </Text>
-                <Window>
-                    <LineChart 
-                        userData={makeAgoodObjectForChart( mainKeys, mainData.score )}
-                        partnerData={makeAgoodObjectForChart( partnerKeys, partnerData.score )}
-                        />
-                </Window>
                 { mainKeys.length > 0 ?
                 <Text> Poniżej znajduje się porównanie waszych ostatnich odpowiedzi. </Text> : null }
                 { mainKeys.length > 0 ?
                 <StandardTable text={"nr testu"} second={mainData.name} third={partnerData.name}>
                     {     
                     makeAgoodObjectForMap(mainData.score, partnerData.score).map((e, i) => (
-                    <TableTr key={e.user + 1} lp={i} userScore={e.user} partnerScore={e.partner}/>
+                    <Tbody key={e.user + 1} lp={i} userScore={e.user} partnerScore={e.partner}/>
                     ))
                     }
                 </StandardTable> : null }             

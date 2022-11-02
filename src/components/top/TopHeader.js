@@ -14,12 +14,13 @@ export function TopHeader({style}) {
             console.log(err.message);
         }
     }
-
     return (
         <header className="header">
-            <div className="symbol symbol__power_settings_new off"
-                    onClick={()=> handleLogOut()}/>
-            <Link to="/home" className="logo">two Of us</Link>
+            <section className="header__bar container-lg">
+                <div className="symbol symbol__power_settings_new off"
+                        onClick={()=> handleLogOut()}/>
+                <Link to="/home" className="logo">two Of us</Link>
+            </section>
         </header>
     )
 }

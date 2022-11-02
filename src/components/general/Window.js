@@ -1,4 +1,4 @@
-export function Window({ children }) {
+export function Window({ children}) {
 
     return (
         <div className="window">

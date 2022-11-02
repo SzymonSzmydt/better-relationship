@@ -35,7 +35,6 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
                     <CategoryBtn 
                         bgcolor={"var(--color-btn-category)"} 
                         text={daysLeft > 0 ? daysLeft === 1 ? `Wróć jutro` : `Wróć za ${daysLeft} dni` : "Wykonaj Test"}
-                        align={"center"}
                         onClick={()=> mainUserScoreKeys.length === 0 ? navigate("/ankiet") : checkDateFromNow(mainUserScoreKeys)}
                         >
                         <div className="symbol symbol__quiz"/>
@@ -43,7 +42,6 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
                     <CategoryBtn 
                         bgcolor={"var(--color-btn-category)"} 
                         text={"Stan relacji"} 
-                        align={"center"}
                         onClick={()=> navigate("/progress", {
                             state: {
                                 mainData: mainUser, 
@@ -58,7 +56,6 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
                     <CategoryBtn 
                         bgcolor={"var(--color-btn-category)"} 
                         text={"Moje postępy"} 
-                        align={"center"}
                         opacity={"0.4"}
                         >
                         <div className="symbol symbol__trending_up"/>
@@ -66,7 +63,6 @@ export function Category({ mainUser, partnerUser, mainUserScoreKeys, partnerUser
                     <CategoryBtn 
                         bgcolor={"var(--color-btn-category)"} 
                         text={"Jego postępy"}
-                        align={"center"}
                         opacity={"0.4"}
                         >
                     <div className="symbol symbol__multiline_chart"/>
