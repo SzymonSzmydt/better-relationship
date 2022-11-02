@@ -18,11 +18,11 @@
     text-decoration: none;
     font-family: var(--Roboto);
     font-size: 1.25rem;
-    color: var(--color-border);
+    color: var(--color-facebook);
 }
 
 .Link:hover {
-    color: var(--color-facebook);
+    color: var(--color-border);
 }
 
 .facebook {

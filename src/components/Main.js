@@ -24,7 +24,7 @@ function reducer(state, action) {
         case 'usersScore':
             return {
                 ...state,
-                [action.field]: Object.keys(action.payload)
+                [action.field]: Object.keys(action.payload).sort()
             } 
         default:
             throw new Error(`Unknown action type: ${action.type}`);
@@ -79,10 +79,12 @@ export function Main() {
             console.log("There is no such documnet");  
         }
         window.sessionStorage.removeItem("loading");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
     
     useEffect(()=> {
         getUserFromServerList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return ( mainUser ? 

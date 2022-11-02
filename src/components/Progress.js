@@ -45,13 +45,14 @@ export function Progress() {
         getStandardQuestionsFromServerList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    console.log('partnerData.score',partnerData.score);
-
     return (
         <>     
             <TopHeader/>
             <TopWindow> 
+                <section className="legend">
+                    <span className="legend__line-one">{mainData.name.split(' ', 1)}</span>
+                    <span className="legend__line-two">{partnerData.name.split(' ', 1)}</span>
+                </section>
                 <LineChart 
                     userData={makeAgoodObjectForChart( mainData.score )}
                     partnerData={makeAgoodObjectForChart( partnerData.score )}

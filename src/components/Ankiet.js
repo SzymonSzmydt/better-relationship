@@ -3,7 +3,6 @@ import { useUserAuth } from './../context/UserAuthContext';
 import { Title } from './general/Title';
 import { Text } from './general/Text';
 import { Question } from './Question';
-import { TopHeader } from './top/TopHeader';
 import { Statistic } from './top/Statistic';
 import { BarChart } from './charts/BarChart';
 import { TopWindow } from './top/TopWindow';
@@ -27,28 +26,26 @@ export function Ankiet() {
     return (
         <>
             <TopWindow>
-                <TopHeader />
                 { question ? questionNumber === 1 ?
                 <div className="container" style={{padding: "0 1rem"}}>
-                    <Title color={"var(--color-facebook)"}> Odpowiedz na pytania</Title>
+                    <Title color={"var(--stat-score)"}> Odpowiedz na pytania</Title>
                     <Text>
                         <em>
                             „Jeśli mówisz prawdę, nie musisz niczego pamiętać” 
                         </em>
                     </Text>
-                    <Text align={"right"}>Mark Twain</Text>         
+                    <Text align={"right"} color={"var(--stat-score)"} >Mark Twain</Text>         
                 </div> :
                 <div className="ankiet__chart-box">
                     <BarChart score={score}/>
                 </div> :
                 <Spinner/>
                 }
-                
-                <div className="top__statistic container">
-                    <Statistic progress={questionNumber} text={"nr pytania"}/>
-                    <Statistic progress={question.length} text={"ilość pytań"}/>
-                </div>
             </TopWindow>
+            <div className="top__statistic container">
+                <Statistic progress={questionNumber} text={"nr pytania"}/>
+                <Statistic progress={question.length} text={"ilość pytań"}/>
+            </div>
             <Question 
                 question={question} 
                 questionNumber={questionNumber} 

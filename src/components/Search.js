@@ -8,8 +8,8 @@ import { useUserAuth } from './../context/UserAuthContext';
 import { Text } from './general/Text';
 import { Title } from './general/Title';
 import { Spinner } from './general/Spinner';
-import { TopHeader } from './top/TopHeader';
 import { BottomWindow } from './general/BottomWindow';
+import { TopWindow } from './top/TopWindow';
 
 export function Search() {
     const [ usersFromServer, setUsersFromServer ] = useState([]);
@@ -54,24 +54,31 @@ export function Search() {
          navigate("/home");
     }, [user.email, navigate]);
 
+    const handleCancel = (e) => {
+        e.preventDefault();
+        navigate("/home")
+    }
+
     return (
         usersFromServer ?
-        <BottomWindow style={{marginTop: "5rem"}}>
-            <div style={{height: "2rem", marginBottom: "2rem"}}>
-                <TopHeader/>
-            </div>   
-            <Title>Znajdź partnera</Title>
-            <Text>
-                Razem łatwiej pokonacie trudności.
-            </Text>
+        <>
+        <TopWindow>
+            <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                <Title>Znajdź partnera</Title>
+                <Text>
+                    Razem łatwiej pokonacie trudności.
+                </Text>
+            </div>
+        </TopWindow>
+        <BottomWindow style={{marginTop: "5rem"}}>  
             <div style={{textAlign: "center"}}>
                 <form className="form">
                     <label>
-                        Wyszukaj email partnera (min. 4 znaki): 
+                        Wyszukaj adres email partnera (min. 4 znaki): 
                     </label>
                     <input type="email" value={inputTyping} onChange={(e)=> setInputTyping(state => (e.target.value))}/>
                     <button className="facebook" onClick={e => handleSearchButton(e) }>Szukaj</button>
-                    <button className="facebook" style={{marginTop: "0"}} onClick={() => navigate("/home") }>Anuluj</button>
+                    <button className="facebook" style={{marginTop: "0"}} onClick={(e) => handleCancel(e)}>Anuluj</button>
                 </form>  
                 <div className="search__results">
                     <ul>
@@ -90,6 +97,7 @@ export function Search() {
                 </span>    
             </div>        
         </BottomWindow>
+        </>
         : <Spinner/>
     )
 }

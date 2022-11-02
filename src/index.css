@@ -12,7 +12,7 @@
 
   --logo__user-name: #004F6D;
   --logo__user-img-shadow: #F1EEDF;
-  --color-logo: #3abdbd;
+  --color-logo: #2fa5a5;
 
   --color-btn-category: #00A42B;
   --color-facebook: #39918C;
@@ -23,10 +23,13 @@
   --stat-text: #2A272A;
   --stat-score: #004F6D;
 
+  --chart-line-one: #ffff00;
+  --chart-line-two: #00ffff;
+
   --color-header-fix: #f8fffb;
 
   --radius: 6px;
-  --Roboto: 'Roboto Condensed', sans-serif;
+  --Roboto: 'Roboto', sans-serif;
   --Great: 'Great Vibes', cursive;
 }
 

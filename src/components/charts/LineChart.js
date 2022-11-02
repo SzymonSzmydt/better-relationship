@@ -1,4 +1,4 @@
-import { VictoryChart, VictoryLine } from 'victory';
+import { VictoryChart, VictoryLine} from 'victory';
 
 const chartTheme = {
   axis: {
@@ -19,7 +19,7 @@ const chartTheme = {
       },
       tickLabels: {
         fill: '#F8FFF8',
-        fontSize: 12,
+        fontSize: 14,
         padding: 10,
       },
     },
@@ -32,7 +32,7 @@ export function LineChart({ userData, partnerData }) {
             <VictoryLine 
                 domain={{y: [0, 11]}}
                 style={{
-                        data: {stroke: !userData ? "transparent" : "yellow", strokeWidth: 2}
+                        data: {stroke: !userData ? "transparent" : "var(--chart-line-one)", strokeWidth: 2}
                   }}
                   animate={{
                     duration: 2000,
@@ -44,7 +44,7 @@ export function LineChart({ userData, partnerData }) {
             />
             <VictoryLine 
                 style={{
-                    data: { stroke: !partnerData ? "transparent" : "aqua", strokeWidth: 2 }
+                    data: { stroke: !partnerData ? "transparent" : "var(--chart-line-two)", strokeWidth: 2 }
                   }} 
                 animate={{
                     duration: 2000,

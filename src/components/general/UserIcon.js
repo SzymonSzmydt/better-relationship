@@ -13,7 +13,7 @@ export function UserIcon({ user, image }) {
             <img src={image} alt="User" style={style} /> :
             <Spinner/> }
             <figcaption>
-                <p style={{textAlign: "center", color: "var(--logo__user-name)", marginTop: "0"}}>
+                <p style={{textAlign: "center", color: "var(--logo__user-name)", marginTop: "0", fontWeight: '600'}}>
                     { user ? user.split(' ', 1) : " " }
                 </p>
             </figcaption>

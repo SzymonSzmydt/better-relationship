@@ -4,6 +4,7 @@ import { Title } from './general/Title';
 import { db } from './../context/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 import { BottomWindow } from './general/BottomWindow';
+import { Window } from './general/Window';
 
 const addScoreToServer = async (user, score) => {
     const rootDate = new Date();
@@ -34,14 +35,15 @@ export function Question({ score, setScore, question, setQuestionNumber, questio
 
     return (
         <BottomWindow>
-            <div className="title-box">
+            <Window className="title-box">
                 <Title align={"center"}> 
                     <em className="em"> { questionNumber > question.length ? "To już wszystkie pytania" : 
                     questionNumber + '. ' + question[questionNumber - 1] } </em>
                 </Title>    
-
-            </div>
-            <div className="window-box" style={{visibility: questionNumber > question.length ? "hidden" : "", transition: "visibility 0.4s"}}>
+            </Window>
+            {
+                questionNumber > question.length ? null :
+            <Window>
                 <Title align={"center"}> { range } </Title>
                 <div className="slidecontainer">
                 <span>
@@ -61,18 +63,20 @@ export function Question({ score, setScore, question, setQuestionNumber, questio
                     <strong style={{color: "var(--gradient-dark)", padding: "1rem"}}> 10</strong>
                 </span>
                 </div>
-            </div>
+            </Window> }
             <div className="bottom-panel">
                 <button className="facebook" onClick={handleNextButton}>
                     { questionNumber > question.length ? "Zakończ" : "Następny" }
                 </button> 
             </div>
-            <Link to="/home" className="Link" style={{paddingTop: "1rem"}}> Anuluj </Link>
-            <span style={{fontSize: "1rem", paddingTop: "1rem"}}>
-                Jeśli nie czujesz, że jest to odpowiedni momemnt na ocenę twojego związku
-                <Link to="/home" className="Link" style={{fontSize: "1rem"}}> Anuluj </Link> 
-                i wróć później.
-            </span>      
+            <Link to="/home" className="Link" style={{margin: "0 0 1rem"}}> Anuluj </Link>
+            <Window>
+                <p>
+                    Jeśli nie czujesz, że jest to odpowiedni moment na ocenę swojego związku
+                    <Link to="/home" className="Link" style={{fontSize: "1rem"}}> Anuluj </Link> 
+                    test i wróć później.
+                </p> 
+            </Window>      
         </BottomWindow> 
     )
 }
