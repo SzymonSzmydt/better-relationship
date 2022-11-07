@@ -6,14 +6,13 @@ import { Window } from './../general/Window';
 import { BottomWindow } from './../general/BottomWindow';
 
 export function Bottom({ mainUser, partnerUser, mainUserScoreKeys, partnerUserScoreKeys }) {
-
     return (
         <BottomWindow className="bottom">
             <Window>
                 <div>
                     <Title>ODKRYJ SIEBIE</Title>
                     <Text>
-                            <em>„Nasza wartość jest sumą naszych wartości”</em>
+                        <em>„Nasza wartość jest sumą naszych wartości”</em>
                     </Text>
                     <Text align={"right"}>Joe Batten</Text>
                 </div>        

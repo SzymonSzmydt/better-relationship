@@ -18,20 +18,17 @@ const makeAgoodObjectForChart = (data) => {
     }
     return null
 }
-
+const getValuesFromUser = (data) => data ? 
+Object.values(data).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : 0;
 const makeAgoodObjectForMap = (userScore, partnerScore) => {
-    const getValuesFromUser = userScore ? 
-        Object.values(userScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : 0;
-    const getValuesFromPartner = partnerScore ? 
-        Object.values(partnerScore).map( e => e.reduce((a, b) => parseFloat(a) + parseFloat(b))).map( e => e / 6) : 0;
-    return getValuesFromUser.map( (values, index) => ({user: values, partner: getValuesFromPartner[index] }) );
+    const one = getValuesFromUser(userScore);
+    const two = getValuesFromUser(partnerScore);
+    return Array.from({length: one.length}, (_, index) => ({user: one[index], partner: two[index] }) );
 }
-
 export function Progress() {
     const { state } = useLocation();
     const [ question, setQuestions ] = useState([]);
     const { mainData, partnerData, mainKeys, partnerKeys } = {...state };
-
     const getStandardQuestionsFromServerList = useCallback(async () => {
         const docSnap = await getDoc(doc(db, 'users', 'ankiet'));
         if (docSnap.exists()) {
@@ -40,7 +37,6 @@ export function Progress() {
             console.log("There is no such documnet");  
         }
     }, []);
-
     useEffect(()=> {
         getStandardQuestionsFromServerList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
